@@ -5,12 +5,12 @@ import DevTools from 'mobx-react-devtools';
 import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
 
 
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 import {logout} from '../functions/auth';
 import {Fb} from '../firebase/firebase-store';
 
-import {Navbar, NavLink, NavText} from './style.js';
+import {Navbar, NavLink} from './style.js';
 
 import Routes from './Routes/Routes';
 import RouteForm from './Routes/RouteForm';
@@ -61,17 +61,17 @@ const appState = {
           : <div className="container-fluid">
             {/*menu*/}
             <Navbar>
-              <NavText
-                className="navbar-brand"
-                href='/'
+              <NavLink>
+                <a href='/'
                 onClick={() => {
                   logout();
                   appState.authorized = false;
                 }}
-              >Odhlásit</NavText>
-              <User email={email}/>
-              <NavLink to="/" className="navbar-brand">Nová cesta</NavLink>
-              <NavLink to="/routes" className="navbar-brand">Přehled cest</NavLink>
+                >Odhlásit</a>
+                </NavLink>
+              <NavLink id='user'><User email={email}/></NavLink>
+              <NavLink primary><Link to="/">Nová cesta</Link></NavLink>
+              <NavLink primary><Link to="/routes">Přehled cest</Link></NavLink>
             </Navbar>
             {/*obsah*/}
             <Route exact path='/' component={RouteForm} />
@@ -88,7 +88,7 @@ export default App;
 const User = ({email}) => {
   const cname = email || 'Anonymní uživatel';
   return (
-    <span className='navbar-brand' href='#' style={{float: 'right'}}>
+    <span href='#'>
       {cname}
     </span>
   );

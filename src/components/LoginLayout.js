@@ -1,8 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {Footer, Hr, Navbar, NavLink, NavText, Strong} from './style.js';
+import {Footer, Hr, Navbar, NavLink, Strong} from './style.js';
 import Login from './Login';
 import Register from './Register';
 
@@ -11,6 +11,7 @@ const Li = styled.li`
 `;
 const Ul = styled.ul`
  list-style-type: none;
+ padding: 0;
 `;
 
 const LoginLayout = () => {
@@ -18,8 +19,8 @@ const LoginLayout = () => {
     <Router>
       <div className="container-fluid">
         <Navbar>
-          <NavLink to="/register" className="navbar-brand">Registrace</NavLink>
-          <NavLink to="/" className="navbar-brand">Přihlášení</NavLink>
+          <NavLink> <Link to="/register">Registrace</Link></NavLink>
+          <NavLink> <Link to="/">Přihlášení</Link></NavLink>
         </Navbar>
         <div>
           <Route exact path="/register" component={Register} />

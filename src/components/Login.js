@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {login} from '../functions/auth';
-import {Link} from 'react-router';
 import {Form} from './style.js';
+
+import 'bootstrap/dist/css/bootstrap.css';
 
 export default class Login extends Component {
   handleSubmit = (e) => {

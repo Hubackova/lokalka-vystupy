@@ -37,7 +37,7 @@ let updatedItem = observable({
     return (
       <Tr>
         {this.renderCells()}
-        <Td style={{textAlign:'right', width: 20}}>
+        <Td style={{textAlign:'right'}}>
           <Button onClick={this.removeItem}><i className='glyphicon glyphicon-trash'></i></Button>
         </Td>
       </Tr>

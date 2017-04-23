@@ -5,6 +5,17 @@ function opacityChanger(opacity) {
   return `rgba(204,230,229,${opacity})`;
 }
 
+const colors = {
+  lightColor: 'rgba(204,230,229,1)',
+  mediumColor: 'rgba(77,182,172,1)',
+  darkColor: 'rgba(0,134,125,1)',
+
+  ultraLightGrey: '#efefef',
+  lightGrey: '#bdbdbd',
+  mediumGrey: '#cfcfcf',
+  darkGrey: '#8d8d8d',
+}
+
 const lightColor = 'rgba(204,230,229,1)';
 const mediumColor = 'rgba(77,182,172,1)';
 const darkColor = 'rgba(0,134,125,1)';
@@ -14,46 +25,6 @@ const lightGrey = '#bdbdbd';
 const mediumGrey = '#cfcfcf';
 const darkGrey = '#8d8d8d';
 
-const Input = styled.input`
-  padding-bottom: 8px;
-  border: none;
-  width: 80%;
-  display: inline-block;
-  &::placeholder {
-    font-weight: normal;
-    color: ${lightGrey};
-  }
-`;
-
-const Select = styled.select`
-  padding-bottom: 8px;
-  border: none;
-  width: 85%;
-  display: inline-block;
-  @media (max-width: 1468px) {
-    width: 100%;
-  }
-`;
-
-const Label = styled.label`
-  font-size: 0.9em;
-  font-weight: normal;
-  display: inline-block;
-  padding-top: 16px;
-  padding-bottom: 8px;
-  border: none;
-  width: 8em;
-`;
-
-const Formgroup = styled.div`
-  border-bottom: 1px solid ${lightGrey};
-  &:hover Label {
-    font-weight: bold;
-  }
-  &:hover {
-    border-bottom: 2px solid ${mediumColor};
-  }
-`;
 
 const Form = styled.form`
   padding: 2em;
@@ -61,6 +32,12 @@ const Form = styled.form`
   min-width: 320px;
   margin: 2em auto;
   background: white;
+  @media only screen and (max-width: 1024px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ColoredWrapper = styled.div`
@@ -86,16 +63,31 @@ const Thead = styled.thead`
 `;
 
 const Th = styled.th`
+  border: none;
   border-bottom: 2px solid ${darkGrey};
   padding: 1em;
+  text-align: left;
+  @media only screen and (max-width: 414px) {
+    padding: 2px;
+    &:nth-child(1),&:nth-child(4), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+      display:none;
+    }
+    &:nth-child(2), &:nth-child(3) {
+      width: 45%;
+    }
+  }
 `;
 
 const Table = styled.table`
+  border-collapse: collapse;
   font-size: 13sp;
   font-family: Roboto Regular;
   margin: 3em auto;
   width: 90%;
   color: ${darkGrey};
+  @media only screen and (max-width: 414px) {
+    width: 100%;
+  }
 `;
 
 const Td = styled.td`
@@ -104,6 +96,15 @@ const Td = styled.td`
   max-width: 250px;
   &:nth-child(5), &:nth-child(6),  &:nth-child(8) {
     width: 8%;
+  }
+  @media only screen and (max-width: 414px) {
+    padding: 2px;
+    &:nth-child(1),&:nth-child(4), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+      display:none;
+    }
+    &:nth-child(2), &:nth-child(3) {
+      width: 40%;
+    }
   }
 `;
 
@@ -159,34 +160,44 @@ const Button = styled.button`
   padding: 0 0.3em;
 `;
 
-const Navbar = styled.nav`
+const Navbar = styled.ul`
   background: ${mediumColor};
-  height: 50px;
+  overflow: hidden;
   padding: 0 20px;
-  text-align: right;
-`;
-
-const NavLink = styled(Link)`
-  color: #000000;
-  display: block;
-  font-family: Helvetica, Arial, sans-serif;
-
-  &:hover {
-    background: ${lightColor};
-  }
-
-  &:hover, &:active, &:visited {
-    color: #000000;
+  text-align: center;
+  @media only screen and (max-width: 768px) {
+    padding: 0;
   }
 `;
-const NavText = styled.a`
-  color: #000000;
-  display: block;
-  font-family: Helvetica, Arial, sans-serif;
-  float: right;
+
+const NavLink = styled.li`
+  height: 56px;
+  display: inline-block;
+  float: ${props => props.primary ? 'left' : 'right'};
+  padding: 20px 12px;
   &:hover {
-    background: ${lightColor};
-    color: #000000;
+    border-bottom: 2px solid ${lightColor};
+  }
+  a {
+    color: white !important;
+  }
+  a:hover, a:active {
+    text-decoration: none !important;
+  }
+  @media only screen and (max-width: 768px) {
+    display: block;
+    height: 36px;
+    padding: 6px;
+    width: 100%;
+    &:hover {
+      background: ${lightColor};
+    }
+    a {
+      color: black !important;
+    }
+    &#user {
+      display: none;
+    }
   }
 `;
 
@@ -205,4 +216,4 @@ const inputStyle = {
   background: 'inherit'
 };
 
-export {AddButton, Button, Footer, Form, Formgroup, ColoredWrapper, Hr, Input, inputStyle, Label, Navbar, NavLink, NavText, Select, Strong, Table, Td, Th, Tr, Thead};
+export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, Navbar, NavLink, Strong, Table, Td, Th, Tr, Thead};
