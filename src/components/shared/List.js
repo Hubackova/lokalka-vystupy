@@ -31,7 +31,7 @@ import ListItem from './ListItem.js';
 
 
     console.log(boulders);
-    const itemNames = ['Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
+    const itemNames = ['Veřejné', 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
     const listBody = data.map(item => (
       <ListItem item={item} key={item.key} />
     ));

@@ -6,6 +6,7 @@ import FormRows from '../shared/FormRows';
 import {ColoredWrapper} from '../style.js';
 
 let state = observable({
+  isPublic: true,
   category: '',
   name: '',
   region: '',
@@ -24,15 +25,21 @@ let state = observable({
     routesRef.push(state);
     for (const prop in state) {
       state[prop] = '';
-    }
+     }
+    state.isPublic = true;
   };
 
   handleChange = e => {
     state[e.target.name] = e.target.value;
   };
 
+  toggleCheckbox = (e) => {
+    state[e.target.name] = !state.isPublic;
+  }
+
   render() {
     const formValues = [
+      {type: 'checkbox', name: 'isPublic', label: 'Zveřejnit'},
       {
         type: 'select',
         name: 'category',
@@ -47,10 +54,10 @@ let state = observable({
       {name: 'climbers', label: 'Lezci', placeholder: 'zadejte lezce'},
       {name: 'date', label: 'Datum', placeholder: 'zadejte datum přelezu'}
     ];
-
+    console.log(state, formValues)
     return (
       <ColoredWrapper>
-        <FormRows addNew={this.addNew} handleChange={this.handleChange} formValues={formValues} state={state} />
+        <FormRows addNew={this.addNew} handleChange={this.handleChange} toggleCheckbox={this.toggleCheckbox} formValues={formValues} state={state} />
       </ColoredWrapper>
     );
   }

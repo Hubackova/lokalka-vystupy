@@ -29,13 +29,14 @@ let updatedItem = observable({
     let {item} = this.props;
     const entries = Object.entries(item);
     const sortedEntries = [entries[0], entries[4], entries[5], entries[7], entries[3], entries[6], entries[1], entries[2]];
-    const itemId = Object.values(item)[9];
+    const itemId = Object.values(item)[10];
     return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} value={i[1]} handleChange={this.handleChange} />);
   }
 
   render() {
     return (
       <Tr>
+        <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>
         {this.renderCells()}
         <Td style={{textAlign:'right'}}>
           <Button onClick={this.removeItem}><i className='glyphicon glyphicon-trash'></i></Button>
@@ -77,6 +78,7 @@ class Cell extends React.Component {
 
   update = (e) => {
     const {itemId, itemName} = this.props;
+    console.log(this.props);
     routesRef.child(itemId).update({[itemName]: e.target.value});
     this.setState({editing: false});
   }

@@ -6,11 +6,13 @@ import {AddButton, colors, Form} from '../style.js';
 
 @observer class FormRows extends Component {
   render() {
-    const {addNew, formValues, handleChange, state} = this.props;
+    const {addNew, formValues, handleChange, state, toggleCheckbox} = this.props;
     const formRows = formValues.map(i => (
       <Formgroup key={i.name}>
         <Label for={i.name}>{i.label}</Label>
-          {(i.type == 'select') ?
+          {(i.type == 'checkbox') ?
+          <input name={i.name} type="checkbox" onChange={toggleCheckbox} checked={state.isPublic}/>
+          : (i.type == 'select') ?
           <InputSpan><Select name={i.name} onChange={handleChange} value={state[i.name]}>
 								<option disabled value=''>-- vyberte --</option>
                 {i.options.map(option => (<option key={option} value={option}>{option}</option>))};

@@ -76,7 +76,6 @@ const appState = {
             {/*obsah*/}
             <Route exact path='/' component={RouteForm} />
             <Route exact path='/routes' component={Routes} />
-            <DevTools />
           </div>}
           </Router>
         </Provider>;
