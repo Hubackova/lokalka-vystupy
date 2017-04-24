@@ -48,13 +48,14 @@ const appState = {
   render() {
     const user = Fb.firebaseAuth().currentUser;
     const {authorized, email, uid} = appState;
-    const RoutesStore = (uid !== 'Xs0w4MJr5xakWA4XBtAVAhawqzI3')
+    const OwnStore = (uid !== 'Xs0w4MJr5xakWA4XBtAVAhawqzI3')
       ? new Store(routesRef.orderByChild('uid').equalTo(uid))
       : new Store(routesRef);
+    const RoutesStore = new Store(routesRef);
 
     return appState.loading === true
       ? <h1>Loading</h1>
-      : <Provider routestore={RoutesStore} uid={uid}>
+      : <Provider routestore={RoutesStore} ownstore={OwnStore} uid={uid}>
           <Router>
           {!authorized
           ? <LoginLayout />

@@ -19,7 +19,7 @@ import ListItem from './ListItem.js';
   isIce = item => item.category == 'Ledy';
 
   render() {
-    const {data} = this.props;
+    const {data, isEditable} = this.props;
 
     const boulders = toJS(data).filter(this.isBoulder);
     const rocksShort = toJS(data).filter(this.isRocksShort);
@@ -29,17 +29,22 @@ import ListItem from './ListItem.js';
     const mixes = toJS(data).filter(this.isMix);
     const ices = toJS(data).filter(this.isIce);
 
-
-    console.log(boulders);
     const itemNames = ['Veřejné', 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
     const listBody = data.map(item => (
-      <ListItem item={item} key={item.key} />
+      <ListItem item={item} key={item.key} isEditable={isEditable}/>
     ));
-    const listHead = itemNames.map(i => <Th key={i}>{i}</Th>);
+    const listHead = isEditable
+      ?  itemNames.map(i => <Th key={i}>{i}</Th>)
+      : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
     return (
       <div>
       <Table>
-        <Thead><Tr>{listHead}<Th></Th></Tr></Thead>
+        <Thead>
+          <Tr>
+            {listHead}
+            {isEditable && <Th></Th>}
+          </Tr>
+        </Thead>
         <tbody>{listBody}</tbody>
       </Table>
       </div>

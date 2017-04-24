@@ -26,7 +26,7 @@ let updatedItem = observable({
   };
 
   renderCells() {
-    let {item} = this.props;
+    let {isEditable, item} = this.props;
     const entries = Object.entries(item);
     const sortedEntries = [entries[0], entries[4], entries[5], entries[7], entries[3], entries[6], entries[1], entries[2]];
     const itemId = Object.values(item)[10];
@@ -34,13 +34,14 @@ let updatedItem = observable({
   }
 
   render() {
+    const isEditable = this.props.isEditable;
     return (
       <Tr>
-        <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>
+        {isEditable && <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>}
         {this.renderCells()}
-        <Td style={{textAlign:'right'}}>
+        {isEditable && <Td style={{textAlign:'right'}}>
           <Button onClick={this.removeItem}><i className='glyphicon glyphicon-trash'></i></Button>
-        </Td>
+        </Td>}
       </Tr>
     );
   }
@@ -58,7 +59,7 @@ class Cell extends React.Component {
   }
 
   render() {
-    const {itemName, value, handleChange} = this.props;
+    const {itemName, isEditable, value, handleChange} = this.props;
     const options = ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy'];
     return this.state.editing
       ? (itemName == 'category'
@@ -71,6 +72,8 @@ class Cell extends React.Component {
   }
 
   onFocus = () => {
+    const isEditable = this.props.isEditable;
+    if (!isEditable) return null;
     this.setState({editing: true}, () => {
       this.refs.selectedInput.focus();
     });
