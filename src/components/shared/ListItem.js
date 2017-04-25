@@ -30,7 +30,7 @@ let updatedItem = observable({
     const entries = Object.entries(item);
     const sortedEntries = [entries[0], entries[4], entries[5], entries[7], entries[3], entries[6], entries[1], entries[2]];
     const itemId = Object.values(item)[10];
-    return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} value={i[1]} handleChange={this.handleChange} />);
+    return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} isEditable={this.props.isEditable} value={i[1]} handleChange={this.handleChange} />);
   }
 
   render() {
@@ -61,7 +61,10 @@ class Cell extends React.Component {
   render() {
     const {itemName, isEditable, value, handleChange} = this.props;
     const options = ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy'];
-    return this.state.editing
+    console.log(isEditable)
+    return (isEditable == false)
+    ? <Td><span>{value}</span></Td>
+    : this.state.editing
       ? (itemName == 'category'
         ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}>
             <option disabled value=''>-- vyberte --</option>
@@ -72,8 +75,6 @@ class Cell extends React.Component {
   }
 
   onFocus = () => {
-    const isEditable = this.props.isEditable;
-    if (!isEditable) return null;
     this.setState({editing: true}, () => {
       this.refs.selectedInput.focus();
     });

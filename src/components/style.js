@@ -181,7 +181,7 @@ const NavLink = styled.li`
   a {
     color: white !important;
   }
-  a:hover, a:active {
+  a:hover, a:active, a:focus {
     text-decoration: none !important;
   }
   @media only screen and (max-width: 768px) {
