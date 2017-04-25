@@ -25,10 +25,10 @@ import List from '../shared/List';
       });
     const hasfilteredData = data.length != 0;
 
-    console.log(data, uid, filteredData)
+    const switcherText = (this.state.pubicRoutes == false) ? 'Přepnout na všechny cesty' : 'Přepnout na vaše cesty'
     return (
         <div style={{textAlign:'center'}}>
-          <button onClick={this.switchRoutes}>Přepínač tabulek</button>
+          <button onClick={this.switchRoutes}>{switcherText}</button>
           {this.state.pubicRoutes == false
           ?<div>
             {hasownstoreData && <List data={ownstoreData} isEditable={true}/>}
