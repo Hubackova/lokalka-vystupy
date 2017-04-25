@@ -1,14 +1,19 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
 import {toJS} from 'mobx';
 
-import {Table, Thead, Th, Tr} from '../style.js';
+import {Button, Table, Thead, Th, Tr} from '../style.js';
 import ListItem from './ListItem.js';
 
+const imgBoulder = require('../../images/boulder.gif')
+const imgRocksShort = require('../../images/rocks.gif')
+const imgRocksLong = require('../../images/long.gif')
+const imgSand = require('../../images/sand.gif')
+const imgMountain = require('../../images/mountains.gif')
+const imgMix = require('../../images/mixy.gif')
+const imgIce = require('../../images/ice.gif')
+
 @observer class List extends Component {
-  static propTypes = {
-    data: PropTypes.object
-  };
 
   isBoulder = item => item.category == 'Bouldery';
   isRocksShort = item => item.category == 'Skalní jednodélky';
@@ -38,6 +43,14 @@ import ListItem from './ListItem.js';
       : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
     return (
       <div>
+      <ImageButton img={imgBoulder} number={boulders.length}/>
+      <ImageButton img={imgRocksShort} number={rocksShort.length}/>
+      <ImageButton img={imgRocksLong} number={rocksLong.length}/>
+      <ImageButton img={imgSand} number={sands.length}/>
+      <ImageButton img={imgMountain} number={mountains.length}/>
+      <ImageButton img={imgMix} number={mixes.length}/>
+      <ImageButton img={imgIce} number={ices.length}/>
+
       <Table>
         <Thead>
           <Tr>
@@ -53,3 +66,11 @@ import ListItem from './ListItem.js';
 }
 
 export default List;
+
+const ImageButton = ({img, number}) => {
+    return (
+    <Button>
+      <img src={img} /><div>{number}</div>
+    </Button>
+  );
+};
