@@ -12,30 +12,43 @@ const imgSand = require('../../images/sand.gif')
 const imgMountain = require('../../images/mountains.gif')
 const imgMix = require('../../images/mixy.gif')
 const imgIce = require('../../images/ice.gif')
+const imgAll = require('../../images/all.png')
 
 @observer class List extends Component {
+  constructor(props){
+    super(props)
+    this.state = {filtered: 'data'}
+  }
 
-  isBoulder = item => item.category == 'Bouldery';
-  isRocksShort = item => item.category == 'Skalní jednodélky';
-  isRocksLong = item => item.category == 'Skalní vícedélky';
-  isSand = item => item.category == 'Písky';
-  isMountain = item => item.category == 'Skalní horské výstupy';
-  isMix = item => item.category == 'Mixové výstupy v horách';
-  isIce = item => item.category == 'Ledy';
+  boulders = item => item.category == 'Bouldery';
+  rocksShort = item => item.category == 'Skalní jednodélky';
+  rocksLong = item => item.category == 'Skalní vícedélky';
+  sand = item => item.category == 'Písky';
+  mountain = item => item.category == 'Skalní horské výstupy';
+  mix = item => item.category == 'Mixové výstupy v horách';
+  ice = item => item.category == 'Ledy';
+
+  imgButtonClick = e => {
+    this.setState({filtered: e.target.name})
+  }
 
   render() {
     const {data, isEditable} = this.props;
 
-    const boulders = toJS(data).filter(this.isBoulder);
-    const rocksShort = toJS(data).filter(this.isRocksShort);
-    const rocksLong = toJS(data).filter(this.isRocksLong);
-    const sands = toJS(data).filter(this.isSand);
-    const mountains = toJS(data).filter(this.isMountain);
-    const mixes = toJS(data).filter(this.isMix);
-    const ices = toJS(data).filter(this.isIce);
+    const boulders = toJS(data).filter(this.boulders);
+    const rocksShort = toJS(data).filter(this.rocksShort);
+    const rocksLong = toJS(data).filter(this.rocksLong);
+    const sands = toJS(data).filter(this.sand);
+    const mountains = toJS(data).filter(this.mountain);
+    const mixes = toJS(data).filter(this.mix);
+    const ices = toJS(data).filter(this.ice);
+
+    const filteredData = {boulders, rocksShort, rocksLong, sands, mountains, mixes, ices}
 
     const itemNames = ['Veřejné', 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
-    const listBody = data.map(item => (
+    const bodyData = this.state.filtered == 'data' ? data : filteredData[this.state.filtered];
+    console.log('toto je state', this.state.filtered)
+    const listBody = bodyData.map(item => (
       <ListItem item={item} key={item.key} isEditable={isEditable}/>
     ));
     const listHead = isEditable
@@ -43,14 +56,14 @@ const imgIce = require('../../images/ice.gif')
       : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
     return (
       <div>
-      <ImageButton img={imgBoulder} number={boulders.length}/>
-      <ImageButton img={imgRocksShort} number={rocksShort.length}/>
-      <ImageButton img={imgRocksLong} number={rocksLong.length}/>
-      <ImageButton img={imgSand} number={sands.length}/>
-      <ImageButton img={imgMountain} number={mountains.length}/>
-      <ImageButton img={imgMix} number={mixes.length}/>
-      <ImageButton img={imgIce} number={ices.length}/>
-
+      <ImageButton img={imgBoulder} name='boulders' number={boulders.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgRocksShort} name='rocksShort' number={rocksShort.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgRocksLong} name='rocksLong' number={rocksLong.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgSand} name='sands' number={sands.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgMountain} name='mountains' number={mountains.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgMix} name='mixes' number={mixes.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgIce} name='ices' number={ices.length} filter={this.imgButtonClick}/>
+      <ImageButton img={imgAll} name='data' number={data.length} filter={this.imgButtonClick}/>
       <Table>
         <Thead>
           <Tr>
@@ -67,10 +80,10 @@ const imgIce = require('../../images/ice.gif')
 
 export default List;
 
-const ImageButton = ({img, number}) => {
+const ImageButton = ({img, name, number, filter}) => {
     return (
     <Button>
-      <img src={img} /><div>{number}</div>
+      <img src={img} onClick={filter} name={name}/><div>{number}</div>
     </Button>
   );
 };

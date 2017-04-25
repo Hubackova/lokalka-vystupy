@@ -27,7 +27,7 @@ import List from '../shared/List';
 
     console.log(data, uid, filteredData)
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
           <button onClick={this.switchRoutes}>Přepínač tabulek</button>
           {this.state.pubicRoutes == false
           ?<div>
