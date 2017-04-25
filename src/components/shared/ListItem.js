@@ -28,7 +28,7 @@ let updatedItem = observable({
   renderCells() {
     let {isEditable, item} = this.props;
     const entries = Object.entries(item);
-    const sortedEntries = [entries[0], entries[4], entries[5], entries[7], entries[3], entries[6], entries[1], entries[2]];
+    const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]];
     const itemId = Object.values(item)[10];
     return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} isEditable={this.props.isEditable} value={i[1]} handleChange={this.handleChange} />);
   }
