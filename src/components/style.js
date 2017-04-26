@@ -169,14 +169,22 @@ const Button = styled.button`
 `;
 
 const Switcher = styled.a`
-  border: 'none';
-  display: block;
-  width: 100%;
+  padding: 8px 16px;
+  margin-top: 10px !important;
+  text-transform: uppercase;
   color: #000000;
-  font-size: 1em;
-  margin: 2px auto;
-  padding: 0 25px;
   cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+    background: ${lightColor};
+    i {
+    color: red;
+    }
+  }
+  i {
+    padding-right: 10px;
+  }
 `;
 
 const Navbar = styled.ul`

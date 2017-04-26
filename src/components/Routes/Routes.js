@@ -29,7 +29,7 @@ import {Switcher} from '../style.js';
     const switcherText = (this.state.pubicRoutes == false) ? 'Přepnout na všechny cesty' : 'Přepnout na vaše cesty'
     return (
         <div>
-          <Switcher onClick={this.switchRoutes}>{switcherText}</Switcher>
+          <div style={{textAlign: 'center'}}><Switcher onClick={this.switchRoutes}><i className='glyphicon glyphicon-refresh' />{switcherText}</Switcher></div>
           {this.state.pubicRoutes == false
           ?<div>
             {hasownstoreData && <List data={ownstoreData} isEditable={true}/>}
