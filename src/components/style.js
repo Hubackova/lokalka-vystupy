@@ -83,7 +83,7 @@ const Table = styled.table`
   font-size: 13sp;
   font-family: Roboto Regular;
   margin: 3em auto;
-  width: 90%;
+  width: 96%;
   color: ${darkGrey};
   @media only screen and (max-width: 414px) {
     width: 100%;
@@ -91,14 +91,16 @@ const Table = styled.table`
 `;
 
 const Td = styled.td`
-  padding: 0.6em;
+  padding: 2px;
   width: 15%;
   max-width: 250px;
+  span {
+   text-align: 'left';
+  }
   &:nth-child(5), &:nth-child(6),  &:nth-child(8) {
     width: 8%;
   }
   @media only screen and (max-width: 414px) {
-    padding: 2px;
     &:nth-child(1),&:nth-child(4), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
       display:none;
     }
@@ -158,6 +160,23 @@ const Button = styled.button`
   font-size: 1em;
   margin: 0.5em;
   padding: 0 0.3em;
+  img {
+    @media only screen and (max-width: 768px) {
+      width: 50px;
+      height: 50px;
+    }
+  }
+`;
+
+const Switcher = styled.a`
+  border: 'none';
+  display: block;
+  width: 100%;
+  color: #000000;
+  font-size: 1em;
+  margin: 2px auto;
+  padding: 0 25px;
+  cursor: pointer;
 `;
 
 const Navbar = styled.ul`
@@ -216,4 +235,4 @@ const inputStyle = {
   background: 'inherit'
 };
 
-export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, Navbar, NavLink, Strong, Table, Td, Th, Tr, Thead};
+export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};

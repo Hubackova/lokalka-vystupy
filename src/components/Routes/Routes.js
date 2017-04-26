@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react';
 import {observable, toJS} from 'mobx';
 
 import List from '../shared/List';
+import {Switcher} from '../style.js';
 
 @inject('ownstore', 'routestore', 'uid') @observer class Routes extends Component {
   constructor(props){
@@ -27,8 +28,8 @@ import List from '../shared/List';
 
     const switcherText = (this.state.pubicRoutes == false) ? 'Přepnout na všechny cesty' : 'Přepnout na vaše cesty'
     return (
-        <div style={{textAlign:'center'}}>
-          <button onClick={this.switchRoutes}>{switcherText}</button>
+        <div>
+          <Switcher onClick={this.switchRoutes}>{switcherText}</Switcher>
           {this.state.pubicRoutes == false
           ?<div>
             {hasownstoreData && <List data={ownstoreData} isEditable={true}/>}

@@ -56,14 +56,16 @@ const imgAll = require('../../images/all.png')
       : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
     return (
       <div>
-      <ImageButton img={imgBoulder} name='boulders' number={boulders.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgRocksShort} name='rocksShort' number={rocksShort.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgRocksLong} name='rocksLong' number={rocksLong.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgSand} name='sands' number={sands.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgMountain} name='mountains' number={mountains.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgMix} name='mixes' number={mixes.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgIce} name='ices' number={ices.length} filter={this.imgButtonClick}/>
-      <ImageButton img={imgAll} name='data' number={data.length} filter={this.imgButtonClick}/>
+      <div style={{textAlign:'center'}}>
+        <ImageButton img={imgBoulder} name='boulders' number={boulders.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgRocksShort} name='rocksShort' number={rocksShort.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgRocksLong} name='rocksLong' number={rocksLong.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgSand} name='sands' number={sands.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgMountain} name='mountains' number={mountains.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgMix} name='mixes' number={mixes.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgIce} name='ices' number={ices.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgAll} name='data' number={data.length} filter={this.imgButtonClick}/>
+      </div>
       <Table>
         <Thead>
           <Tr>
