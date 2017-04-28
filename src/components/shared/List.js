@@ -47,7 +47,6 @@ const imgAll = require('../../images/all.png')
 
     const itemNames = ['Veřejné', 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
     const bodyData = this.state.filtered == 'data' ? data : filteredData[this.state.filtered];
-    console.log('toto je state', this.state.filtered)
     const listBody = bodyData.map(item => (
       <ListItem item={item} key={item.key} isEditable={isEditable}/>
     ));
@@ -57,14 +56,14 @@ const imgAll = require('../../images/all.png')
     return (
       <div>
       <div style={{textAlign:'center'}}>
-        <ImageButton img={imgBoulder} name='boulders' number={boulders.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgRocksShort} name='rocksShort' number={rocksShort.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgRocksLong} name='rocksLong' number={rocksLong.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgSand} name='sands' number={sands.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgMountain} name='mountains' number={mountains.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgMix} name='mixes' number={mixes.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgIce} name='ices' number={ices.length} filter={this.imgButtonClick}/>
-        <ImageButton img={imgAll} name='data' number={data.length} filter={this.imgButtonClick}/>
+        <ImageButton img={imgBoulder} name='boulders' number={boulders.length} filter={this.imgButtonClick} title='Bouldery'/>
+        <ImageButton img={imgRocksShort} name='rocksShort' number={rocksShort.length} filter={this.imgButtonClick} title='Skalní jednodélky'/>
+        <ImageButton img={imgRocksLong} name='rocksLong' number={rocksLong.length} filter={this.imgButtonClick} title='Skalní vícedélky'/>
+        <ImageButton img={imgSand} name='sands' number={sands.length} filter={this.imgButtonClick} title='Písky'/>
+        <ImageButton img={imgMountain} name='mountains' number={mountains.length} filter={this.imgButtonClick} title='Skalní horské výstupy'/>
+        <ImageButton img={imgMix} name='mixes' number={mixes.length} filter={this.imgButtonClick} title='Mixové výstupy v horách'/>
+        <ImageButton img={imgIce} name='ices' number={ices.length} filter={this.imgButtonClick} title='Ledy'/>
+        <ImageButton img={imgAll} name='data' number={data.length} filter={this.imgButtonClick} title='Vše'/>
       </div>
       <Table>
         <Thead>
@@ -82,10 +81,10 @@ const imgAll = require('../../images/all.png')
 
 export default List;
 
-const ImageButton = ({img, name, number, filter}) => {
+const ImageButton = ({img, name, number, filter, title}) => {
     return (
     <Button>
-      <img src={img} onClick={filter} name={name}/><div>{number}</div>
+      <img src={img} onClick={filter} name={name} title={title}/><div>{number}</div>
     </Button>
   );
 };

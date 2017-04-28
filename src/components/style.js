@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
 
 function opacityChanger(opacity) {
   return `rgba(204,230,229,${opacity})`;
@@ -210,6 +209,7 @@ const NavLink = styled.li`
   }
   a:hover, a:active, a:focus {
     text-decoration: none !important;
+    cursor: pointer;
   }
   @media only screen and (max-width: 768px) {
     display: block;

@@ -26,7 +26,7 @@ import {Switcher} from '../style.js';
       });
     const hasfilteredData = data.length != 0;
 
-    const switcherText = (this.state.pubicRoutes == false) ? 'Přepnout na všechny cesty' : 'Přepnout na vaše cesty'
+    const switcherText = (this.state.pubicRoutes == false) ? 'Všechny cesty' : 'Jen moje cesty'
     return (
         <div>
           <div style={{textAlign: 'center'}}><Switcher onClick={this.switchRoutes}><i className='glyphicon glyphicon-refresh' />{switcherText}</Switcher></div>

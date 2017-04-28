@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {signIn} from '../functions/auth';
-import {Link} from 'react-router';
 import {Form} from './style.js';
 
 export default class Register extends Component {

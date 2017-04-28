@@ -54,7 +54,6 @@ let state = observable({
       {name: 'climbers', label: 'Lezci', placeholder: 'zadejte lezce'},
       {name: 'date', label: 'Datum', placeholder: 'zadejte datum přelezu'}
     ];
-    console.log(state, formValues)
     return (
       <ColoredWrapper>
         <FormRows addNew={this.addNew} handleChange={this.handleChange} toggleCheckbox={this.toggleCheckbox} formValues={formValues} state={state} />

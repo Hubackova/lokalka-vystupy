@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {observer, Provider} from 'mobx-react';
 import {observable, toJS} from 'mobx';
 import DevTools from 'mobx-react-devtools';
-import {BrowserRouter as Router, Link, Route, Redirect} from 'react-router-dom';
-
 
 // import 'bootstrap/dist/css/bootstrap.css';
 
@@ -24,12 +22,13 @@ import {routesRef} from '../firebase/firebase-store';
 const appState = {
   @observable authorized: false,
   @observable loading: true,
+  @observable list: false,
   @observable uid: false,
   @observable email: false
 };
 
 @observer class App extends Component {
-  componentWillMount() {
+  componentDidMount() {
     Fb.firebaseAuth().onAuthStateChanged(user => {
       if (user) {
         appState.authorized = true;
@@ -45,6 +44,14 @@ const appState = {
     });
   }
 
+  switchPageToList = () => {
+    appState.list = true;
+  };
+
+  switchPageToNew = () => {
+    appState.list = false;
+  };
+
   render() {
     const user = Fb.firebaseAuth().currentUser;
     const {authorized, email, uid} = appState;
@@ -56,7 +63,6 @@ const appState = {
     return appState.loading === true
       ? <h1>Loading</h1>
       : <Provider routestore={RoutesStore} ownstore={OwnStore} uid={uid}>
-          <Router>
           {!authorized
           ? <LoginLayout />
           : <div className="container-fluid">
@@ -71,14 +77,12 @@ const appState = {
                 >Odhlásit</a>
                 </NavLink>
               <NavLink id='user'><User email={email}/></NavLink>
-              <NavLink primary><Link to="/">Nová cesta</Link></NavLink>
-              <NavLink primary><Link to="/routes">Přehled cest</Link></NavLink>
+              <NavLink primary><a onClick={this.switchPageToNew}>Nová cesta</a></NavLink>
+              <NavLink primary><a onClick={this.switchPageToList}>Přehled cest</a></NavLink>
             </Navbar>
             {/*obsah*/}
-            <Route exact path='/' component={RouteForm} />
-            <Route exact path='/routes' component={Routes} />
+            {!appState.list ? <RouteForm /> : <Routes />}
           </div>}
-          </Router>
         </Provider>;
   }
 }
