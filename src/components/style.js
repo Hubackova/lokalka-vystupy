@@ -68,7 +68,7 @@ const Th = styled.th`
   text-align: left;
   @media only screen and (max-width: 414px) {
     padding: 2px;
-    &:nth-child(1),&:nth-child(4), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+    &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
       display:none;
     }
     &:nth-child(2), &:nth-child(3) {
@@ -100,7 +100,7 @@ const Td = styled.td`
     width: 8%;
   }
   @media only screen and (max-width: 414px) {
-    &:nth-child(1),&:nth-child(4), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+    &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
       display:none;
     }
     &:nth-child(2), &:nth-child(3) {
