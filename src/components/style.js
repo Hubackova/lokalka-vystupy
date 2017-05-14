@@ -67,7 +67,10 @@ const Th = styled.th`
   padding: 1em;
   text-align: left;
   &:nth-child(1) {
-    width: 5%;
+    width: 3%;
+  }
+  &:nth-child(6), &:nth-child(7),  &:nth-child(9) {
+    width: 8%;
   }
   @media only screen and (max-width: 414px) {
     padding: 2px;
@@ -100,9 +103,9 @@ const Td = styled.td`
    text-align: 'left';
   }
   &:nth-child(1) {
-    width: 5%;
+    width: 3%;
   }
-  &:nth-child(5), &:nth-child(6),  &:nth-child(8) {
+  &:nth-child(6), &:nth-child(7),  &:nth-child(9) {
     width: 8%;
   }
   @media only screen and (max-width: 414px) {
@@ -157,10 +160,9 @@ const Button = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${props => props.primary ? '#ff7043' : 'inherit'};
   border: ${props => props.primary ? '1px solid #ff7043' : 'inherit'};
-
+  margin: ${props => props.remove ? 0 : '0.5em'};
   color: #000000;
   font-size: 1em;
-  margin: 0.5em;
   padding: 0 0.3em;
   img {
     @media only screen and (max-width: 768px) {

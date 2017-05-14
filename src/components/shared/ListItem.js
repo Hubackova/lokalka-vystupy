@@ -42,10 +42,10 @@ let updatedItem = observable({
     const isEditable = this.props.isEditable;
     return (
       <Tr>
-        {isEditable && <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>}
+        <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>
         {this.renderCells()}
         {isEditable && <Td style={{textAlign:'right'}}>
-          <Button onClick={this.removeItem}><i className='glyphicon glyphicon-trash'></i></Button>
+          <Button onClick={this.removeItem} remove><i className='glyphicon glyphicon-trash'></i></Button>
         </Td>}
       </Tr>
     );

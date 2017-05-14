@@ -52,7 +52,7 @@ let state = observable({
       {name: 'difficulty', label: 'Obtížnost', placeholder: 'zadejte obtížnost cesty'},
       {name: 'style', label: 'Styl', placeholder: 'zadejte styl přelezu, např. OS'},
       {name: 'climbers', label: 'Lezci', placeholder: 'zadejte lezce'},
-      {name: 'date', label: 'Datum', placeholder: 'zadejte datum přelezu, např. 24.12.2017'}
+      {name: 'date', label: 'Datum', placeholder: 'zadejte datum přelezu, např. 24.12.'}
     ];
     return (
       <ColoredWrapper>

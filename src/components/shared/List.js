@@ -50,9 +50,11 @@ const imgAll = require('../../images/all.png')
     const listBody = bodyData.map(item => (
       <ListItem item={item} key={item.key} isEditable={isEditable}/>
     ));
-    const listHead = isEditable
-      ?  itemNames.map(i => <Th key={i}>{i}</Th>)
-      : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
+    // const listHead = isEditable
+    //   ?  itemNames.map(i => <Th key={i}>{i}</Th>)
+    //   : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
+    const listHead = itemNames.map(i => <Th key={i}>{i}</Th>)
+
     return (
       <div>
       <div style={{textAlign:'center'}}>
