@@ -66,6 +66,9 @@ const Th = styled.th`
   border-bottom: 2px solid ${darkGrey};
   padding: 1em;
   text-align: left;
+  &:nth-child(1) {
+    width: 5%;
+  }
   @media only screen and (max-width: 414px) {
     padding: 2px;
     &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
@@ -90,11 +93,14 @@ const Table = styled.table`
 `;
 
 const Td = styled.td`
-  padding: 2px;
+  padding: 2px 1em;
   width: 15%;
   max-width: 250px;
   span {
    text-align: 'left';
+  }
+  &:nth-child(1) {
+    width: 5%;
   }
   &:nth-child(5), &:nth-child(6),  &:nth-child(8) {
     width: 8%;
@@ -137,16 +143,13 @@ const AddButton = styled.button`
   border-radius: 2px;
   border: none;
 
-
   &:hover {
     cursor: pointer;
-    background: ${ultraLightGrey};
+    color: ${darkColor};
     opacity: 0.8;
   }
-  &:active, &:focus {
-    cursor: pointer;
-    background: ${lightGrey};
-    opacity: 0.8;
+  & i {
+    color: green;
   }
 `;
 

@@ -5,6 +5,21 @@ import styled from 'styled-components';
 import {AddButton, colors, Form} from '../style.js';
 
 @observer class FormRows extends Component {
+  constructor(props){
+    super(props)
+    this.state = {add: true}
+  }
+
+  clickAdd = e => {
+    this.props.addNew(e);
+    this.setState({add: false})
+    setTimeout(() => {
+      this.setState({add: true})
+    }, 1000)
+
+
+  }
+
   render() {
     const {addNew, formValues, handleChange, state, toggleCheckbox} = this.props;
     const formRows = formValues.map(i => (
@@ -28,9 +43,11 @@ import {AddButton, colors, Form} from '../style.js';
       <Form>
         {formRows}
         <div style={{marginTop: '50px', textAlign: 'right'}}>
-            <Label></Label>
-            <AddButton onClick={addNew}>Přidat</AddButton>
+            <AddButton onClick={this.clickAdd}>
+            {this.state.add ? 'Přidat' : <i className='glyphicon glyphicon-saved'></i>}
+            </AddButton>
         </div>
+        <div id='added' style={{display:'none', textAlign: 'center'}}><i className='glyphicon glyphicon-saved'></i> Cesta přidána</div>
       </Form>
     );
   }

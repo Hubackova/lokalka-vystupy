@@ -27,9 +27,14 @@ let updatedItem = observable({
 
   renderCells() {
     let {isEditable, item} = this.props;
-    const entries = Object.entries(item);
+    // ES7 version: const entries = Object.entries(item);
+    let entries = []
+    Object.keys(item).map((keyName, keyIndex) => {
+      entries.push([keyName, item[keyName]])
+    })
     const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]];
-    const itemId = Object.values(item)[10];
+    // ES7 version: const itemId = Object.values(item)[10];
+    const itemId = Object.keys(item).map(value => item[value])[10]
     return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} isEditable={this.props.isEditable} value={i[1]} handleChange={this.handleChange} />);
   }
 
@@ -61,8 +66,7 @@ class Cell extends React.Component {
   render() {
     const {itemName, isEditable, value, handleChange} = this.props;
     const options = ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy'];
-    console.log(isEditable)
-    return (isEditable == false)
+      return (isEditable == false)
     ? <Td><span>{value}</span></Td>
     : this.state.editing
       ? (itemName == 'category'
@@ -82,7 +86,6 @@ class Cell extends React.Component {
 
   update = (e) => {
     const {itemId, itemName} = this.props;
-    console.log(this.props);
     routesRef.child(itemId).update({[itemName]: e.target.value});
     this.setState({editing: false});
   }
