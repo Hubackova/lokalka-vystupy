@@ -24,10 +24,12 @@ import {AddButton, colors, Form} from '../style.js';
       <Formgroup key={i.name}>
         <Label for={i.name}>{i.label}</Label>
           {(i.type == 'checkbox') ?
-          <input name={i.name} type="checkbox" onChange={toggleCheckbox} checked={state.isPublic}/>
+          <InputSpan><i className='glyphicon glyphicon-user'></i> <input name={i.name} type="checkbox" onChange={toggleCheckbox} checked={state.isPublic}/></InputSpan>
           : (i.type == 'select') ?
           <InputSpan><Select name={i.name} onChange={handleChange} value={state[i.name]}>
-								<option disabled value=''>-- vyberte --</option>
+								<option disabled value=''>
+                  {i.name == 'date' ? '-- vyberte měsíc--' : '-- vyberte kategorii--'}
+                  </option>
                 {i.options.map(option => (<option key={option} value={option}>{option}</option>))};
           </Select></InputSpan>
           : <InputSpan><Input
@@ -53,6 +55,14 @@ import {AddButton, colors, Form} from '../style.js';
 
 const InputSpan = styled.span`
     display: table-cell;
+    & i {
+      display: none;
+    }
+    @media only screen and (max-width: 768px) {
+      & i {
+        display: inline;
+      }
+    }
 `;
 
 const Input = styled.input`

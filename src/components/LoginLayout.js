@@ -52,6 +52,7 @@ class LoginLayout extends Component {
               <Li>Novinkou oproti minulému roku je <Strong>možnost editace výstupů</Strong> - stačí v přehledu cest kliknout na příslušné pole.</Li>
               <Li>Pro odpůrce formuláře je tu stále možnost zasílat Výstupy na mail <Strong>hubackova.lenka@gmail.com</Strong>. Prosím až ke konci roku.</Li>
               <Li>Pro uživatele <Strong>Internet Explorer</Strong> - aby web nevypadal až tak hnusně, nainstalujte si třeba <Strong><a href='https://www.google.com/chrome'>Chrome</a></Strong>.</Li>
+              <Li>Výstupovej formulář má několik nedodělků, postup času to snad dám trochu dokupy. <Strong>Nápady na zlepšení a změny</Strong> jsou vítány (mail viz výše).</Li>
             </Ul>
           </Footer>
         </div>
