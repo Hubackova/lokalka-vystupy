@@ -69,8 +69,8 @@ const Th = styled.th`
   &:nth-child(1) {
     width: 3%;
   }
-  &:nth-child(6), &:nth-child(7),  &:nth-child(9) {
-    width: 8%;
+  &:nth-child(6), &:nth-child(7) {
+    width: 7%;
   }
   @media only screen and (max-width: 414px) {
     padding: 2px;
@@ -105,8 +105,8 @@ const Td = styled.td`
   &:nth-child(1) {
     width: 3%;
   }
-  &:nth-child(6), &:nth-child(7),  &:nth-child(9) {
-    width: 8%;
+  &:nth-child(6), &:nth-child(7) {
+    width: 5%;
   }
   @media only screen and (max-width: 414px) {
     &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {

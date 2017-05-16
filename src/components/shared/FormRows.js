@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {observer} from 'mobx-react';
 import styled from 'styled-components';
-
 import {AddButton, colors, Form} from '../style.js';
 
 @observer class FormRows extends Component {
@@ -16,8 +16,6 @@ import {AddButton, colors, Form} from '../style.js';
     setTimeout(() => {
       this.setState({add: true})
     }, 1000)
-
-
   }
 
   render() {
@@ -105,3 +103,5 @@ const Formgroup = styled.div`
 
 
 export default FormRows;
+
+

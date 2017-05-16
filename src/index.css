@@ -23,3 +23,7 @@ h1, .form-button{
 .container-fluid {
   padding: 0;
 }
+
+a {
+  cursor: pointer;
+}

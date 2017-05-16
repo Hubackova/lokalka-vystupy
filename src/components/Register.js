@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {signIn} from '../functions/auth';
 import {Form} from './style.js';
 

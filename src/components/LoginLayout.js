@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {Footer, Hr, Navbar, NavLink, Strong} from './style.js';
@@ -16,19 +17,20 @@ const Ul = styled.ul`
 class LoginLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = {login: true};
+    this.state = {registration: false};
   }
 
   switchPageToRegistration = () => {
-    this.setState({login: false});
+    this.setState({registration: true});
   };
 
   switchPageToLogin = () => {
-    this.setState({login: true});
+    this.setState({registration: false});
   };
 
   render() {
-    const switcherText = this.state.login == false ? 'Přihlášení' : 'Přepnout na vaše cesty';
+    const switcherText = this.state.registration == true ? 'Přihlášení' : 'Přepnout na vaše cesty';
+    console.log(this.state)
     return (
         <div className="container-fluid">
           <Navbar>
@@ -38,18 +40,18 @@ class LoginLayout extends Component {
             <NavLink> <a onClick={this.switchPageToLogin}>Přihlášení</a></NavLink>
           </Navbar>
           <div>
-            {!this.state.login ? <Register /> : <Login />}
+            {this.state.registration ? <Register /> : <Login />}
           </div>
           <Footer mainColor footer>
             <h1>Výstupy do Výročky 2017</h1>
             <Hr />
             <Ul>
               <Li>Opět sbíráme výstupy pomocí <Strong>formuláře</Strong></Li>
-              <Li>Pokud jste se registrovali minulý rok, vaše registrace je stále platná. Pokud ne, prosím <Strong><a href='' onClick={this.switchPageToRegistration}>registrujte se</a></Strong>.</Li>
+              <Li>Pokud jste se registrovali minulý rok, vaše registrace je stále platná. Pokud ne, prosím <Strong><a onClick={this.switchPageToRegistration}>registrujte se</a></Strong>.</Li>
               <Li>Na doporučení expředsedy <Strong>sběr probíhá po celý rok</Strong>, deadline bude upřesněn.</Li>
               <Li>Novinkou oproti minulému roku je <Strong>možnost editace výstupů</Strong> - stačí v přehledu cest kliknout na příslušné pole.</Li>
               <Li>Pro odpůrce formuláře je tu stále možnost zasílat Výstupy na mail <Strong>hubackova.lenka@gmail.com</Strong>. Prosím až ke konci roku.</Li>
-              <Li>Pro uživatele <Strong>Internet Explorer</Strong> - aby web nevypadal až tak hnusně, nainstalujte si třeba <Strong><a href='http://google.com'>Chrome</a></Strong>.</Li>
+              <Li>Pro uživatele <Strong>Internet Explorer</Strong> - aby web nevypadal až tak hnusně, nainstalujte si třeba <Strong><a href='https://www.google.com/chrome'>Chrome</a></Strong>.</Li>
             </Ul>
           </Footer>
         </div>

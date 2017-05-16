@@ -1,4 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Fb, routesRef} from '../../firebase/firebase-store';
 import {observable, toJS} from 'mobx';
 import {observer} from 'mobx-react';
@@ -65,17 +66,20 @@ class Cell extends React.Component {
 
   render() {
     const {itemName, isEditable, value, handleChange} = this.props;
-    const options = ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy'];
-      return (isEditable == false)
-    ? <Td><span>{value}</span></Td>
-    : this.state.editing
-      ? (itemName == 'category'
-        ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}>
-            <option disabled value=''>-- vyberte --</option>
-            {options.map(option => (<option key={option} value={option}>{option}</option>))};
-        </select></Td>
-        : <Td><input ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}/></Td>)
-    : <Td onClick={this.onFocus}><span>{value}</span></Td>;
+    const options = itemName == 'category'
+    ? ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
+    : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
+
+    return (isEditable == false)
+      ? <Td><span>{value}</span></Td>
+      : this.state.editing
+        ? (itemName == 'category' || itemName == 'date'
+          ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}>
+              <option disabled value=''>-- vyberte --</option>
+              {options.map(option => (<option key={option} value={option}>{option}</option>))};
+          </select></Td>
+          : <Td><input ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}/></Td>)
+      : <Td onClick={this.onFocus}><span>{value}</span></Td>;
   }
 
   onFocus = () => {

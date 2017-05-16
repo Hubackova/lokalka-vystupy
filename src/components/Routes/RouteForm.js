@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {observer, inject} from 'mobx-react';
 import {observable, toJS} from 'mobx';
 import {routesRef} from '../../firebase/firebase-store';
@@ -52,7 +53,12 @@ let state = observable({
       {name: 'difficulty', label: 'Obtížnost', placeholder: 'zadejte obtížnost cesty'},
       {name: 'style', label: 'Styl', placeholder: 'zadejte styl přelezu, např. OS'},
       {name: 'climbers', label: 'Lezci', placeholder: 'zadejte lezce'},
-      {name: 'date', label: 'Datum', placeholder: 'zadejte datum přelezu, např. 24.12.'}
+      {
+        type: 'select',
+        name: 'date',
+        label: 'Datum',
+        options: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
+      }
     ];
     return (
       <ColoredWrapper>

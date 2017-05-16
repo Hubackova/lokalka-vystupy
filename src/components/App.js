@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {observer, Provider} from 'mobx-react';
 import {observable, toJS} from 'mobx';
 import DevTools from 'mobx-react-devtools';
