@@ -56,7 +56,7 @@ let state = observable({
       {
         type: 'select',
         name: 'date',
-        label: 'Datum',
+        label: 'Měsíc',
         options: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
       }
     ];
