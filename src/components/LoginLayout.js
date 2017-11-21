@@ -47,8 +47,8 @@ class LoginLayout extends Component {
             <Hr />
             <Ul>
               <Li>Opět sbíráme výstupy pomocí <Strong>formuláře</Strong></Li>
-              <Li>Pokud jste se registrovali minulý rok, vaše registrace je stále platná. Pokud ne, prosím <Strong><a onClick={this.switchPageToRegistration}>registrujte se</a></Strong>.</Li>
-              <Li>Na doporučení expředsedy <Strong>sběr probíhá po celý rok</Strong>, deadline bude upřesněn.</Li>
+              <Li>Pokud jsi se registroval minulý rok, registrace je stále platná. Pokud ne, prosím <Strong><a onClick={this.switchPageToRegistration}>zaregistruj se</a></Strong>.</Li>
+              <Li>Na doporučení expředsedy <Strong>sběr probíhá po celý rok</Strong>, deadline je <Strong>1.1.2018</Strong>.</Li>
               <Li>Novinkou oproti minulému roku je <Strong>možnost editace výstupů</Strong> - stačí v přehledu cest kliknout na příslušné pole.</Li>
               <Li>Pro odpůrce formuláře je tu stále možnost zasílat Výstupy na mail <Strong>hubackova.lenka@gmail.com</Strong>. Prosím až ke konci roku.</Li>
               <Li>Pro uživatele <Strong>Internet Explorer</Strong> - aby web nevypadal až tak hnusně, nainstalujte si třeba <Strong><a href='https://www.google.com/chrome'>Chrome</a></Strong>.</Li>
