@@ -36,7 +36,7 @@ export default class Register extends Component {
               Odeslat
             </button>
             <div style={{marginTop: 10}}>
-              Pokud jste již zaregistrováni, přihlašte se. Registrace slouží pro možnost pozdější editace vámi zadaných cest.
+              Pokud jsi už zaregistrován, přihlaš se. Registrace slouží pro možnost pozdější editace vámi zadaných cest.
             </div>
           </div>
         </Form>
