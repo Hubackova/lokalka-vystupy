@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Fb, routesRef} from '../../firebase/firebase-store';
 import {observable, toJS} from 'mobx';
 import {observer} from 'mobx-react';
-import {Button, inputStyle, Td, Tr} from '../style.js';
+import {Button, inputStyle, inputReadStyle, Td, Tr} from '../style.js';
 
 let updatedItem = observable({
   category: '',
@@ -36,7 +36,14 @@ let updatedItem = observable({
     const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]];
     // ES7 version: const itemId = Object.values(item)[10];
     const itemId = Object.keys(item).map(value => item[value])[10]
-    return sortedEntries.map(i => <Cell key={Math.random()} itemId={itemId} itemName={i[0]} isEditable={this.props.isEditable} value={i[1]} handleChange={this.handleChange} />);
+    return sortedEntries.map(i => <Cell
+      key={Math.random()}
+      itemId={itemId}
+      itemName={i[0]}
+      isEditable={this.props.isEditable}
+      value={i[1]}
+      handleChange={this.handleChange}
+    />);
   }
 
   render() {
@@ -61,7 +68,9 @@ export default ListItem;
 class Cell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editing: false};
+    this.state = {
+      editing: false
+    };
   }
 
   render() {
@@ -71,18 +80,24 @@ class Cell extends React.Component {
     : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
 
     return (isEditable == false)
-      ? <Td><span>{value}</span></Td>
+      ? <Td>{value}</Td>
       : this.state.editing
         ? (itemName == 'category' || itemName == 'date'
-          ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}>
+          ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} onBlur={this.onBlur}>
               <option disabled value=''>-- vyberte --</option>
-              {options.map(option => (<option key={option} value={option}>{option}</option>))};
+              {options.map(option => (<option key={option}>{option}</option>))};
           </select></Td>
-          : <Td><input ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} value={updatedItem[name]} onBlur={this.onBlur}/></Td>)
-      : <Td onClick={this.onFocus}><span>{value}</span></Td>;
+          : <Td><input ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} onBlur={this.onBlur}/></Td>)
+      : (itemName == 'category' || itemName == 'date')
+      //not editing
+      ? <Td><select style={inputReadStyle} name={itemName} onClick={this.onFocus} value={value}>
+              <option disabled value=''>-- vyberte --</option>
+              {options.map(option => (<option key={option}>{option}</option>))};
+          </select></Td>
+      : <Td><input style={inputReadStyle} name={itemName} onClick={this.onFocus} value={value}/></Td>;
   }
 
-  onFocus = () => {
+  onFocus = (e) => {
     this.setState({editing: true}, () => {
       this.refs.selectedInput.focus();
     });

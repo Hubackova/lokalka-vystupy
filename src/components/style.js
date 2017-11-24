@@ -242,10 +242,18 @@ const Strong = styled.strong`
 `;
 
 const inputStyle = {
-  color: '#000000',
+  color: `black`,
   border: 'none',
   width: '100%',
   background: 'inherit'
 };
 
-export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};
+const inputReadStyle = {
+  cursor: 'pointer',
+  color: `${darkGrey}`,
+  border: 'none',
+  width: '100%',
+  background: 'inherit'
+};
+
+export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};
