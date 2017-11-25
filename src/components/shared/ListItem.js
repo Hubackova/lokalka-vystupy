@@ -40,9 +40,9 @@ let updatedItem = observable({
       handleChange={this.handleChange}
       isEditable={this.props.isEditable}
       itemId={itemId}
-      itemName={i[0]}
+      itemName={i ? i[0] : ''}
       key={Math.random()}
-      value={i[1]}
+      value={i ? i[1] : ''}
     />)
   }
 
@@ -59,7 +59,7 @@ let updatedItem = observable({
     const isEditable = this.props.isEditable
     return (
       <Tr>
-        <Td><input defaultChecked={this.props.item.isPublic} onClick={this.handlePublicChange} type='checkbox' value={this.props.item.isPublic}/></Td>
+        <Td><input defaultChecked={this.props.item.isPublic} onClick={this.handlePublicChange} type='checkbox'/></Td>
         {this.renderCells()}
         {isEditable && <Td style={{textAlign:'right'}}>
           <a onClick={this.removeItem}><i className="fa fa-trash" /></a>
