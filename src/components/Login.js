@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {login} from '../functions/auth';
-import {Form} from './style.js';
+import {Form, AddButton} from './style.js';
 import firebase from 'firebase';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -28,6 +28,7 @@ export default class Login extends Component {
   }
 
   render() {
+    const {switchPageToRegistration} = this.props
     return (
       <div>
         <h1> Přihlášení </h1>
@@ -48,16 +49,16 @@ export default class Login extends Component {
             />
           </div>
           <div className="form-button">
-            <button
+            <AddButton
               type="submit"
               className="btn btn-default">
               Přihlásit
-            </button>
+            </AddButton>
             <div style={{marginTop: 10}}>
-              Pokud jsi tu poprvé, zaregistruj se. Registrace slouží pro možnost pozdější editace zadaných cest.
+              Pokud jsi tu poprvé, <a style={{color: 'red'}} onClick={switchPageToRegistration}>zaregistruj se</a>. Registrace slouží pro možnost pozdější editace zadaných cest.
             </div>
             <div>
-              Pokud jsi zapomněl heslo, zadej svůj email a klikni <a onClick={this.handleResetPassword}>SEM</a>. Na email ti dojde link pro změnu hesla.
+              Pokud jsi zapomněl heslo, zadej svůj email a klikni <a style={{color: 'red'}} onClick={this.handleResetPassword}>SEM</a>. Na email ti dojde link pro změnu hesla.
             </div>
             {this.state.emailSent && <div style={{textAlign: 'center', color: 'red', paddingTop: 10}}>Email odeslán</div>}
           </div>

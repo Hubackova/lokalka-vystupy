@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {observer, inject} from 'mobx-react';
 import {toJS} from 'mobx';
 
-import {Button, Table, Thead, Th, Tr} from '../style.js';
+import {ImgButton, Table, Thead, Th, Tr} from '../style.js';
 import ListItem from './ListItem.js';
 
 const imgBoulder = require('../../images/boulder.gif')
@@ -86,8 +86,8 @@ export default List;
 
 const ImageButton = ({img, name, number, filter, title}) => {
     return (
-    <Button>
+    <ImgButton>
       <img src={img} onClick={filter} name={name} title={title}/><div>{number}</div>
-    </Button>
+    </ImgButton>
   );
 };

@@ -124,6 +124,9 @@ const Tr = styled.tr`
   &:hover {
     background: ${ultraLightGrey};
   }
+  & i {
+    color: ${darkGrey};
+  }
   &:hover i {
     color: red;
   }
@@ -156,7 +159,7 @@ const AddButton = styled.button`
   }
 `;
 
-const Button = styled.button`
+const ImgButton = styled.button`
   /* Adapt the colors based on primary prop */
   background: ${props => props.primary ? '#ff7043' : 'inherit'};
   border: ${props => props.primary ? '1px solid #ff7043' : 'inherit'};
@@ -164,6 +167,10 @@ const Button = styled.button`
   color: #000000;
   font-size: 1em;
   padding: 0 0.3em;
+  :hover, :active, :focus {
+    text-decoration: none !important;
+    cursor: pointer !important;
+  }
   img {
     @media only screen and (max-width: 768px) {
       width: 50px;
@@ -256,4 +263,4 @@ const inputReadStyle = {
   background: 'inherit'
 };
 
-export {AddButton, Button, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};
+export {AddButton, ImgButton, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};

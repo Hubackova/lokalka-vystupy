@@ -40,7 +40,9 @@ class LoginLayout extends Component {
             <NavLink> <a onClick={this.switchPageToLogin}>Přihlášení</a></NavLink>
           </Navbar>
           <div>
-            {this.state.registration ? <Register /> : <Login />}
+            {this.state.registration
+              ? <Register switchPageToLogin={this.switchPageToLogin}/>
+              : <Login switchPageToRegistration={this.switchPageToRegistration}/>}
           </div>
           <Footer mainColor footer>
             <h1>Výstupy do Výročky 2017</h1>

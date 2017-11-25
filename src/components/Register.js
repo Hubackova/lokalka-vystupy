@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {signIn} from '../functions/auth';
-import {Form} from './style.js';
+import {Form, AddButton} from './style.js';
 
 export default class Register extends Component {
   handleSubmit = (e) => {
@@ -9,6 +9,7 @@ export default class Register extends Component {
     signIn(this.email.value, this.pw.value);
   }
   render() {
+    const {switchPageToLogin} = this.props
     return (
       <div>
         <h1>Registrace</h1>
@@ -30,13 +31,13 @@ export default class Register extends Component {
             />
           </div>
           <div className="form-button">
-            <button
+            <AddButton
               type="submit"
               className="btn btn-default">
               Odeslat
-            </button>
+            </AddButton>
             <div style={{marginTop: 10}}>
-              Pokud jsi už zaregistrován, přihlaš se. Registrace slouží pro možnost pozdější editace vámi zadaných cest.
+              Pokud jsi už zaregistrován, <a style={{color: 'red'}} onClick={switchPageToLogin}>přihlaš se</a>. Registrace slouží pro možnost pozdější editace vámi zadaných cest.
             </div>
           </div>
         </Form>
