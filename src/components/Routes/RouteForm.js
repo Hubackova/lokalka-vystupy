@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {observer, inject} from 'mobx-react';
-import {observable, toJS} from 'mobx';
-import {routesRef} from '../../firebase/firebase-store';
-import FormRows from '../shared/FormRows';
-import {ColoredWrapper} from '../style.js';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import {observer, inject} from 'mobx-react'
+import {observable, toJS} from 'mobx'
+import {routesRef} from '../../firebase/firebase-store'
+import FormRows from '../shared/FormRows'
+import {ColoredWrapper} from '../style.js'
 
 let state = observable({
   isPublic: true,
@@ -17,25 +17,25 @@ let state = observable({
   climbers: '',
   date: '',
   uid: ''
-});
+})
 
 @inject('uid') @observer class RouteForm extends Component {
   addNew = e => {
-    e.preventDefault();
-    state.uid = this.props.uid;
-    routesRef.push(state);
+    e.preventDefault()
+    state.uid = this.props.uid
+    routesRef.push(state)
     for (const prop in state) {
-      state[prop] = '';
-     }
-    state.isPublic = true;
+      state[prop] = ''
+    }
+    state.isPublic = true
   };
 
   handleChange = e => {
-    state[e.target.name] = e.target.value;
+    state[e.target.name] = e.target.value
   };
 
   toggleCheckbox = (e) => {
-    state[e.target.name] = !state.isPublic;
+    state[e.target.name] = !state.isPublic
   }
 
   render() {
@@ -59,13 +59,13 @@ let state = observable({
         label: 'Měsíc',
         options: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
       }
-    ];
+    ]
     return (
       <ColoredWrapper>
-        <FormRows addNew={this.addNew} handleChange={this.handleChange} toggleCheckbox={this.toggleCheckbox} formValues={formValues} state={state} />
+        <FormRows addNew={this.addNew} formValues={formValues} handleChange={this.handleChange} state={state} toggleCheckbox={this.toggleCheckbox} />
       </ColoredWrapper>
-    );
+    )
   }
 }
 
-export default RouteForm;
+export default RouteForm

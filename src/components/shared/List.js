@@ -96,7 +96,7 @@ const imgAll = require('../../images/all.png')
           {!this.state[`${i.name}Ascent`] && this.state.sortType === i.name && <i className='fa fa-arrow-up' style={{color: 'rgba(77,182,172,1)', float: 'right', paddingTop: 5}}/>}
         </Th>)
     })
-    const publicColumn = <Th key='public'><span className='fa fa-user' title='Veřejné' /></Th>
+    const publicColumn = <Th key='isPublic'><span className='fa fa-user' title='Veřejné' /></Th>
     const listHead = [publicColumn, ...listHeadData, <Th key='remove'/>]
     const bodyData = this.state.filtered === 'data' ? data : filteredData[this.state.filtered]
     const listBody = this.sortBy(bodyData).map(item => (

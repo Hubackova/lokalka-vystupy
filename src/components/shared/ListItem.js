@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Fb, routesRef} from '../../firebase/firebase-store';
-import {observable, toJS} from 'mobx';
-import {observer} from 'mobx-react';
-import {Button, inputStyle, inputReadStyle, Td, Tr} from '../style.js';
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+import {Fb, routesRef} from '../../firebase/firebase-store'
+import {observable, toJS} from 'mobx'
+import {observer} from 'mobx-react'
+import {Button, inputStyle, inputReadStyle, Td, Tr} from '../style.js'
 
 let updatedItem = observable({
   category: '',
@@ -15,7 +15,7 @@ let updatedItem = observable({
   climbers: '',
   date: '',
   uid: ''
-});
+})
 
 @observer class ListItem extends Component {
   static propTypes = {
@@ -23,100 +23,109 @@ let updatedItem = observable({
   };
 
   handleChange = e => {
-    updatedItem[e.target.name] = e.target.value;
+    updatedItem[e.target.name] = e.target.value
   };
 
   renderCells() {
-    let {isEditable, item} = this.props;
+    let {isEditable, item} = this.props
     // ES7 version: const entries = Object.entries(item);
     let entries = []
     Object.keys(item).map((keyName, keyIndex) => {
       entries.push([keyName, item[keyName]])
     })
-    const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]];
+    const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]]
     // ES7 version: const itemId = Object.values(item)[10];
     const itemId = Object.keys(item).map(value => item[value])[10]
     return sortedEntries.map(i => <Cell
-      key={Math.random()}
+      handleChange={this.handleChange}
+      isEditable={this.props.isEditable}
       itemId={itemId}
       itemName={i[0]}
-      isEditable={this.props.isEditable}
+      key={Math.random()}
       value={i[1]}
-      handleChange={this.handleChange}
-    />);
+    />)
   }
 
+  handlePublicChange = e => {
+    const {isEditable, item} = this.props
+    if (!isEditable) return
+    const itemId = Object.keys(item).map(value => item[value])[10]
+    const itemName = 'isPublic'
+    routesRef.child(itemId).update({[itemName]: !this.props.item.isPublic})
+    this.setState({editing: false})
+  };
+
   render() {
-    const isEditable = this.props.isEditable;
+    const isEditable = this.props.isEditable
     return (
       <Tr>
-        <Td><input type='checkbox' defaultChecked={this.props.item.isPublic} disabled/></Td>
+        <Td><input defaultChecked={this.props.item.isPublic} onClick={this.handlePublicChange} type='checkbox' value={this.props.item.isPublic}/></Td>
         {this.renderCells()}
         {isEditable && <Td style={{textAlign:'right'}}>
-          <a onClick={this.removeItem}><i className="fa fa-trash"></i></a>
+          <a onClick={this.removeItem}><i className="fa fa-trash" /></a>
         </Td>}
       </Tr>
-    );
+    )
   }
   removeItem = () => {
-    Fb.removeItem(this.props.item.key);
+    Fb.removeItem(this.props.item.key)
   };
 }
 
-export default ListItem;
+export default ListItem
 
 class Cell extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       editing: false
-    };
+    }
   }
 
   render() {
-    const {itemName, isEditable, value, handleChange} = this.props;
-    const options = itemName == 'category'
-    ? ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
-    : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec'];
+    const {itemName, isEditable, value, handleChange} = this.props
+    const options = itemName === 'category'
+      ? ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
+      : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
 
-    return (isEditable == false)
+    return (isEditable === false)
       ? <Td>{value}</Td>
       : this.state.editing
-        ? (itemName == 'category' || itemName == 'date'
-          ? <Td><select ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} onBlur={this.onBlur}>
-              <option disabled value=''>-- vyberte --</option>
-              {options.map(option => (<option key={option}>{option}</option>))};
+        ? (itemName === 'category' || itemName === 'date'
+          ? <Td><select name={itemName} onBlur={this.onBlur} onChange={handleChange} onKeyDown={this.keyDown} ref="selectedInput" style={inputStyle}>
+            <option disabled value=''>-- vyberte --</option>
+            {options.map(option => (<option key={option}>{option}</option>))};
           </select></Td>
-          : <Td><input ref="selectedInput" name={itemName} onChange={handleChange} onKeyDown={this.keyDown} style={inputStyle} onBlur={this.onBlur}/></Td>)
-      : (itemName == 'category' || itemName == 'date')
-      //not editing
-      ? <Td><select style={inputReadStyle} name={itemName} onClick={this.onFocus} value={value}>
-              <option disabled value=''>-- vyberte --</option>
-              {options.map(option => (<option key={option}>{option}</option>))};
+          : <Td><input name={itemName} onBlur={this.onBlur} onChange={handleChange} onKeyDown={this.keyDown} ref="selectedInput" style={inputStyle}/></Td>)
+        : (itemName === 'category' || itemName === 'date')
+        //not editing
+          ? <Td><select name={itemName} onClick={this.onFocus} style={inputReadStyle} value={value}>
+            <option disabled value=''>-- vyberte --</option>
+            {options.map(option => (<option key={option}>{option}</option>))};
           </select></Td>
-      : <Td><input style={inputReadStyle} name={itemName} onClick={this.onFocus} value={value}/></Td>;
+          : <Td><input name={itemName} onClick={this.onFocus} style={inputReadStyle} value={value}/></Td>
   }
 
   onFocus = (e) => {
     this.setState({editing: true}, () => {
-      this.refs.selectedInput.focus();
-    });
+      this.refs.selectedInput.focus()
+    })
   }
 
   update = (e) => {
-    const {itemId, itemName} = this.props;
-    routesRef.child(itemId).update({[itemName]: e.target.value});
-    this.setState({editing: false});
+    const {itemId, itemName} = this.props
+    routesRef.child(itemId).update({[itemName]: e.target.value})
+    this.setState({editing: false})
   }
 
   onBlur = e => {
-    this.update(e);
+    this.update(e)
   }
 
   keyDown = e => {
-    const isEditing = this.state.editing;
-    if (e.keyCode == '13' && isEditing) {
-      this.update(e);
+    const isEditing = this.state.editing
+    if (e.keyCode === '13' && isEditing) {
+      this.update(e)
     }
   }
 
