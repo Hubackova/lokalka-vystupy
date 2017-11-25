@@ -59,7 +59,7 @@ let updatedItem = observable({
     const isEditable = this.props.isEditable
     return (
       <Tr>
-        <Td><input defaultChecked={this.props.item.isPublic} onClick={this.handlePublicChange} type='checkbox'/></Td>
+        <Td><input defaultChecked={this.props.item.isPublic} disabled={!isEditable} onClick={this.handlePublicChange} type='checkbox'/></Td>
         {this.renderCells()}
         {isEditable && <Td style={{textAlign:'right'}}>
           <a onClick={this.removeItem}><i className="fa fa-trash" /></a>
