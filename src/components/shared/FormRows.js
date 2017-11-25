@@ -24,7 +24,7 @@ import {AddButton, colors, Form} from '../style.js';
       <Formgroup key={i.name}>
         <Label for={i.name}>{i.label}</Label>
           {(i.type == 'checkbox') ?
-          <InputSpan><i className='glyphicon glyphicon-user'></i> <input name={i.name} type="checkbox" onChange={toggleCheckbox} checked={state.isPublic}/></InputSpan>
+          <InputSpan><i className='fa fa-user'></i> <input name={i.name} type="checkbox" onChange={toggleCheckbox} checked={state.isPublic}/></InputSpan>
           : (i.type == 'select') ?
           <InputSpan><Select name={i.name} onChange={handleChange} value={state[i.name]}>
 								<option disabled value=''>
@@ -44,10 +44,10 @@ import {AddButton, colors, Form} from '../style.js';
         {formRows}
         <div style={{marginTop: '50px', textAlign: 'right'}}>
             <AddButton onClick={this.clickAdd}>
-            {this.state.add ? 'Přidat' : <i className='glyphicon glyphicon-saved'></i>}
+            {this.state.add ? 'Přidat' : <i className='fa fa-saved'></i>}
             </AddButton>
         </div>
-        <div id='added' style={{display:'none', textAlign: 'center'}}><i className='glyphicon glyphicon-saved'></i> Cesta přidána</div>
+        <div id='added' style={{display:'none', textAlign: 'center'}}><i className='fa fa-saved'></i> Cesta přidána</div>
       </Form>
     );
   }

@@ -46,7 +46,7 @@ const imgAll = require('../../images/all.png')
 
     const filteredData = {boulders, rocksShort, rocksLong, sands, mountains, mixes, ices}
 
-    const itemNames = [<span className='glyphicon glyphicon-user' title='Veřejné'></span>, 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
+    const itemNames = [<span className='fa fa-user' title='Veřejné'></span>, 'Kategorie', 'Název cesty', 'Oblast', 'Podoblast', 'Obtížnost', 'Styl', 'Lezci', 'Datum'];
     const bodyData = this.state.filtered == 'data' ? data : filteredData[this.state.filtered];
     const listBody = bodyData.map(item => (
       <ListItem item={item} key={item.key} isEditable={isEditable}/>
