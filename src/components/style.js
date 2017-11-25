@@ -70,7 +70,7 @@ const Th = styled.th`
     width: 3%;
   }
   &:nth-child(6), &:nth-child(7) {
-    width: 7%;
+    width: 8%;
   }
   @media only screen and (max-width: 414px) {
     padding: 2px;
@@ -78,7 +78,7 @@ const Th = styled.th`
       display:none;
     }
     &:nth-child(2), &:nth-child(3) {
-      width: 45%;
+      width: 44%;
     }
   }
 `;
@@ -256,7 +256,7 @@ const inputStyle = {
 };
 
 const inputReadStyle = {
-  cursor: 'pointer',
+  cursor: 'text',
   color: `${darkGrey}`,
   border: 'none',
   width: '100%',
