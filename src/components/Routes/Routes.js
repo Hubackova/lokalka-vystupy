@@ -6,6 +6,7 @@ import {observable, toJS} from 'mobx'
 import List from '../shared/List'
 import {Switcher} from '../style.js'
 
+
 @inject('ownstore', 'routestore', 'uid') @observer class Routes extends Component {
   constructor(props) {
     super(props)
@@ -35,7 +36,7 @@ import {Switcher} from '../style.js'
           ? <div>
             {hasownstoreData && <List data={ownstoreData} isEditable/>}
           </div>
-          :<div>
+          : <div>
             {hasfilteredData && <List data={filteredData} isEditable={false}/>}
           </div>}
       </div>
@@ -43,3 +44,6 @@ import {Switcher} from '../style.js'
   }
 }
 export default Routes
+
+
+

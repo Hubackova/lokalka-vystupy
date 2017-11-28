@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
 import {Footer, Hr, Navbar, NavLink, Strong} from './style.js'
 import Login from './Login'
 import Register from './Register'
@@ -29,8 +28,7 @@ class LoginLayout extends Component {
   };
 
   render() {
-    const switcherText = this.state.registration == true ? 'Přihlášení' : 'Přepnout na vaše cesty'
-    console.log(this.state)
+    const switcherText = this.state.registration === true ? 'Přihlášení' : 'Přepnout na vaše cesty'
     return (
       <div className="container-fluid">
         <Navbar>

@@ -40,7 +40,7 @@ import {AddButton, colors, Form} from '../style.js'
             /></InputSpan>}
       </Formgroup>))
     return (
-      <Form>
+      <ThisForm>
         {formRows}
         <div style={{marginTop: '50px', textAlign: 'right'}}>
           <AddButton onClick={this.clickAdd}>
@@ -48,7 +48,7 @@ import {AddButton, colors, Form} from '../style.js'
           </AddButton>
         </div>
         <div id='added' style={{display:'none', textAlign: 'center'}}><i className='fa fa-saved' /> Cesta přidána</div>
-      </Form>
+      </ThisForm>
     )
   }
 };
@@ -110,7 +110,17 @@ const Formgroup = styled.div`
     border-bottom: 2px solid ${colors.mediumColor};
   }
 `
-
+const ThisForm = styled.form`
+  padding: 2em;
+  width: 65%;
+  min-width: 320px;
+  float: left;
+  background: white;
+  @media only screen and (max-width: 768px) {
+    margin: 2em auto;
+    width: 100%;
+  }
+`
 
 export default FormRows
 
