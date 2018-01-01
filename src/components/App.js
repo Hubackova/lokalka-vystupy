@@ -63,28 +63,29 @@ const appState = {
 
     return appState.loading === true
       ? <h1>Loading</h1>
-      : <Provider ownstore={OwnStore} routestore={RoutesStore} uid={uid}>
-        {!authorized
-          ? <LoginLayout />
-          : <div className="container-fluid">
-            {/*menu*/}
-            <Navbar>
-              <NavLink>
-                <a href='/'
-                  onClick={() => {
-                    logout()
-                    appState.authorized = false
-                  }}
-                >Odhlásit</a>
-              </NavLink>
-              <NavLink id='user'><User email={email}/></NavLink>
-              <NavLink primary><a onClick={this.switchPageToNew}>Nová cesta</a></NavLink>
-              <NavLink primary><a onClick={this.switchPageToList}>Přehled cest</a></NavLink>
-            </Navbar>
-            {/*obsah*/}
-            {!appState.list ? <RouteForm /> : <Routes />}
-          </div>}
-      </Provider>
+      : <NewYear />
+      // <Provider ownstore={OwnStore} routestore={RoutesStore} uid={uid}>
+      //   {!authorized
+      //     ? <LoginLayout />
+      //     : <div className="container-fluid">
+      //       {/*menu*/}
+      //       <Navbar>
+      //         <NavLink>
+      //           <a href='/'
+      //             onClick={() => {
+      //               logout()
+      //               appState.authorized = false
+      //             }}
+      //           >Odhlásit</a>
+      //         </NavLink>
+      //         <NavLink id='user'><User email={email}/></NavLink>
+      //         <NavLink primary><a onClick={this.switchPageToNew}>Nová cesta</a></NavLink>
+      //         <NavLink primary><a onClick={this.switchPageToList}>Přehled cest</a></NavLink>
+      //       </Navbar>
+      //       {/*obsah*/}
+      //       {!appState.list ? <RouteForm /> : <Routes />}
+      //     </div>}
+      // </Provider>
   }
 }
 
@@ -96,5 +97,18 @@ const User = ({email}) => {
     <span href='#'>
       {cname}
     </span>
+  )
+}
+
+
+const NewYear = () => {
+  return (
+  <div className="container-fluid">
+    <Navbar> <h1> Lokálka - výstupy </h1> </Navbar>
+
+    <div style={{textAlign: 'center', marginTop: 50}}>
+      Rok <b>2017</b> máme za sebou, tabulka a formulář pro <b><span style={{color: 'red'}}>2018</span></b> coming soon!
+      </div>
+    </div>
   )
 }
