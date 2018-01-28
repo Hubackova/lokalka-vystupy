@@ -114,8 +114,8 @@ const ThisForm = styled.form`
   padding: 2em;
   width: 65%;
   min-width: 320px;
-  float: left;
   background: white;
+  margin: 2em auto;
   @media only screen and (max-width: 768px) {
     margin: 2em auto;
     width: 100%;

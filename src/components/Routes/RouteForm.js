@@ -75,7 +75,7 @@ let state = observable({
     return (
       <div>
         <FormRows addNew={this.addNew} formValues={formValues} handleChange={this.handleChange} state={state} toggleCheckbox={this.toggleCheckbox} />
-        <ChartWrapper>
+        {/*<ChartWrapper>
           <h3 style={{textAlign: 'center', paddingBottom: 20}}>
             <span style={{fontWeight: 'bold'}}>TROCHA STATISTIKY:</span> dáme aspoň <span style={{color: 'red'}}>200</span> cest?
           </h3>
@@ -87,7 +87,7 @@ let state = observable({
             <span style={{fontWeight: 'bold'}}>Deadline: </span><span style={{color: 'red', fontWeight: 'bold'}}>31.12.2017</span>
             <Countdown date= {moment().endOf('year')} renderer={renderer}/>
           </div>
-        </ChartWrapper>
+        </ChartWrapper>*/}
       </div>
     )
   }
