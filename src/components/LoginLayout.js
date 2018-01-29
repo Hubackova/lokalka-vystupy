@@ -43,16 +43,16 @@ class LoginLayout extends Component {
             : <Login switchPageToRegistration={this.switchPageToRegistration}/>}
         </div>
         <Footer footer mainColor>
-          <h1>Výstupy do Výročky 2017</h1>
+          <h1>Výstupy do Výročky 2018</h1>
           <Hr />
           <Ul>
             <Li>Opět sbíráme výstupy pomocí <Strong>formuláře</Strong></Li>
             <Li>Pokud jsi se registroval minulý rok, registrace je stále platná. Pokud ne, prosím <Strong><a onClick={this.switchPageToRegistration}>zaregistruj se</a></Strong>.</Li>
-            <Li>Na doporučení expředsedy <Strong>sběr probíhá po celý rok</Strong>, deadline je <Strong>1.1.2018</Strong>.</Li>
-            <Li>Novinkou oproti minulému roku je <Strong>možnost editace výstupů</Strong> - přejdi na zobrazení "Moje cesty" a v přehledu cest klikni na příslušné pole. Výstupy se taky dají nově řadit podle názvu, oblasti apod.</Li>
+            <Li>Na doporučení expředsedy <Strong>sběr probíhá po celý rok</Strong>, deadline bude upřesněn.</Li>
+            <Li>Výstupy je možné editovat - přejdi na zobrazení "Moje cesty" a v přehledu cest klikni na příslušné pole. Výstupy se taky dají řadit podle názvu, oblasti apod. - stačí kliknout na příslušnou hlavičku tabulky</Li>
             <Li>Pro odpůrce formuláře je tu stále možnost zasílat Výstupy na mail <Strong>hubackova.lenka@gmail.com</Strong>. Bizarnosti typu přelety / přeběhy (prostě co se nikam nehodí) taky pošlete na mail.</Li>
             <Li>Pro uživatele <Strong>Internet Explorer</Strong> - aby web nevypadal až tak hnusně, nainstalujte si třeba <Strong><a href='https://www.google.com/chrome'>Chrome</a></Strong>.</Li>
-            <Li>Výstupovej formulář má několik nedodělků, postup času to snad dám trochu dokupy. <Strong>Nápady na zlepšení a změny</Strong> jsou vítány (mail viz výše).</Li>
+            <Li><Strong>Nápady na zlepšení a změny</Strong> jsou vítány (mail viz výše).</Li>
           </Ul>
         </Footer>
       </div>
