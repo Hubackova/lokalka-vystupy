@@ -49,7 +49,7 @@ class LokalkaHomepage extends Component {
           <HrB />
           <Ul>
             <Li>Kvůli útokům a s tím spojeným přetížením serveru <StrongB>jsme byli nuceni webové stránky lokalka.eu dočasně vypnout</StrongB>. Hledá se náhradní řešení.</Li>
-            <Li>Pokud se najde někdo, kdo <StrongB>rozumí WordPressu především z hlediska bezpečnosti</StrongB> a je ochotnej webu věnovat trochu času, bude super, když se ozve třeba mě (hubackova.lenka@gmail.com) nebo Evce B.</Li>
+            <Li>Pokud se najde někdo, kdo <StrongB>rozumí WordPressu především z hlediska bezpečnosti</StrongB> a je ochotnej webu věnovat trochu času, bude super, když se ozve třeba mně (hubackova.lenka@gmail.com) nebo Evce B.</Li>
             <HrB />
             <Li><StrongB>Program horoškoly</StrongB> najdete <A href="https://docs.google.com/spreadsheets/d/1iB8yl7VzFLZb_-v-eh8W9zlY8lYWU-OPnecx_L8773M/edit#gid=955794777">tady</A></Li>
             <Li>Odkaz na <StrongB>tabulku k zimním Tatrám <A href="https://docs.google.com/spreadsheets/d/1JuRNZe7JVs5kySsGlqaja4qbzj6aRCdinLIzfAYVizM/edit#gid=0">tady</A></StrongB></Li>
