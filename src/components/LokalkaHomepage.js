@@ -57,7 +57,6 @@ class LokalkaHomepage extends Component {
             <Li>V mezičase můžete zapsat do <A href="https://docs.google.com/spreadsheets/d/11X9z_VWIMOW3nVgaWn5R8l979tBzALTfGp_TIQ8DVE4/edit#gid=0">knihovničkové tabulky</A>, co máte za průvodce, který jste ochotni zapůjčit</Li>
             <Li>Pokud chcete na tuhle tu provizorní stránku <StrongB>přihodit nějaké info / odkaz</StrongB>, dejte vědět, není problem</Li>
             <Li>Ještě odkaz na <StrongB><A href="https://www.facebook.com/groups/567033560144439/">Facebook Lokálky</A></StrongB></Li>
-            <Li>Číslo účtu Horolezecký oddíl Lokomotiva Brno, z.s.: <StrongB>2801236055 / 2010</StrongB></Li>
             <Li>Tak zatím uživejte hor a pište články - ať je na web co dávat, až zase povstane z popela!</Li>
           </Ul>
         </Footer>
