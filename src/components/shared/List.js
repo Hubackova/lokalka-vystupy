@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {observer, inject} from 'mobx-react'
+import {observer} from 'mobx-react'
 import {toJS} from 'mobx'
 
 import {ImgButton, Table, Thead, Th, Tr} from '../style.js'
@@ -103,9 +103,6 @@ const imgAll = require('../../images/all.png')
     const listBody = this.sortBy(bodyData).map(item => (
       <ListItem isEditable={isEditable} item={item} key={item.key}/>
     ))
-    // const listHead = isEditable
-    //   ?  itemNames.map(i => <Th key={i}>{i}</Th>)
-    //   : itemNames.map(i => <Th key={i}>{i}</Th>).slice(1,itemNames.length);
 
     return (
       <div>
@@ -135,11 +132,23 @@ const imgAll = require('../../images/all.png')
 
 export default List
 
+List.propTypes = {
+  data: PropTypes.object,
+  isEditable: PropTypes.bool,
+}
+
 const ImageButton = ({img, name, number, filter, title}) => {
   return (
     <ImgButton>
-      <img name={name} onClick={filter} src={img} title={title}/><div>{number}</div>
+      <img name={name} alt={name} onClick={filter} src={img} title={title}/><div>{number}</div>
     </ImgButton>
   )
 }
 
+ImageButton.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.number,
+  title: PropTypes.string,
+  filter: PropTypes.function
+}

@@ -1,4 +1,4 @@
-import {observable, autorun} from 'mobx';
+import {observable} from 'mobx';
 
 class Store {
   @observable data = [];
@@ -10,7 +10,7 @@ class Store {
   loadRoutes(ref) {
     ref.on('value', snapshot => {
       var items = [];
-      // můžeme dát i rovnou this.setState({data: snapshot.val()}), díky forEach si ale můžeme uspořádat objekt jak chce a přidat key
+      // this.setState({data: snapshot.val()}) is also possible, but thanks to forEach is possible to arrange Object as we want and add key
       snapshot.forEach(child => {
         let childItem = child.val();
         childItem.key = child.key;

@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Doughnut, Chart} from 'react-chartjs-2'
 
-const PieChart = ({data, hasLegend}) => {
+const PieChart = ({data}) => {
   const labels = ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
   const getCategory = (data) => {
     const categories = data.map(i => i.category)
@@ -70,3 +70,7 @@ const PieChart = ({data, hasLegend}) => {
 }
 
 export default PieChart
+
+PieChart.propTypes = {
+  data: PropTypes.object
+}

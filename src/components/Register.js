@@ -45,3 +45,7 @@ export default class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  switchPageToLogin: PropTypes.function
+}

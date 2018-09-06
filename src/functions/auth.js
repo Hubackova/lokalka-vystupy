@@ -1,18 +1,18 @@
-import {Fb} from '../firebase/firebase-store';
+import {Fb} from '../firebase/firebase-store'
 
 export function signIn(email, pw) {
   return Fb.firebaseAuth().createUserWithEmailAndPassword(email, pw)
     .then(saveUser)
-    .catch((error) => alert(error, error));
+    .catch((error) => alert(error, error))
 }
 
 export function logout() {
-  return Fb.firebaseAuth().signOut();
+  return Fb.firebaseAuth().signOut()
 }
 
 export function login(email, pw) {
   return Fb.firebaseAuth().signInWithEmailAndPassword(email, pw)
-  .catch((error) => alert(error, error));
+    .catch((error) => alert(error, error))
 }
 
 export function saveUser(user) {
@@ -21,5 +21,5 @@ export function saveUser(user) {
       email: user.email,
       uid: user.uid
     })
-    .then(() => user);
+    .then(() => user)
 }

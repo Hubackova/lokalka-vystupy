@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 function opacityChanger(opacity) {
-  return `rgba(204,230,229,${opacity})`;
+  return `rgba(204,230,229,${opacity})`
 }
 
 const colors = {
@@ -15,14 +15,12 @@ const colors = {
   darkGrey: '#8d8d8d',
 }
 
-const lightColor = 'rgba(204,230,229,1)';
-const mediumColor = 'rgba(77,182,172,1)';
-const darkColor = 'rgba(0,134,125,1)';
+const lightColor = 'rgba(204,230,229,1)'
+const mediumColor = 'rgba(77,182,172,1)'
+const darkColor = 'rgba(0,134,125,1)'
 
-const ultraLightGrey = '#efefef';
-const lightGrey = '#bdbdbd';
-const mediumGrey = '#cfcfcf';
-const darkGrey = '#8d8d8d';
+const ultraLightGrey = '#efefef'
+const darkGrey = '#8d8d8d'
 
 
 const Form = styled.form`
@@ -37,11 +35,11 @@ const Form = styled.form`
   @media only screen and (max-width: 768px) {
     width: 100%;
   }
-`;
+`
 
 const ColoredWrapper = styled.div`
   background: ${props => props.mainColor ? lightColor : ultraLightGrey};
-`;
+`
 
 const Footer = styled.footer`
   background: ${props => props.mainColor ? opacityChanger(0.8) : ultraLightGrey};
@@ -55,11 +53,11 @@ const Footer = styled.footer`
   &:hover {
     background: ${props => props.mainColor ? opacityChanger(1) : ultraLightGrey};
   }
-`;
+`
 
 const Thead = styled.thead`
   font-weight: bold;
-`;
+`
 
 const Th = styled.th`
   border: none;
@@ -81,7 +79,7 @@ const Th = styled.th`
       width: 44%;
     }
   }
-`;
+`
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -93,7 +91,7 @@ const Table = styled.table`
   @media only screen and (max-width: 414px) {
     width: 100%;
   }
-`;
+`
 
 const Td = styled.td`
   padding: 2px 1em;
@@ -116,7 +114,7 @@ const Td = styled.td`
       width: 40%;
     }
   }
-`;
+`
 
 const Tr = styled.tr`
   background: white;
@@ -130,7 +128,7 @@ const Tr = styled.tr`
   &:hover i {
     color: red;
   }
-`;
+`
 
 const AddButton = styled.button`
   color: #000000;
@@ -157,7 +155,7 @@ const AddButton = styled.button`
   & i {
     color: green;
   }
-`;
+`
 
 const ImgButton = styled.button`
   /* Adapt the colors based on primary prop */
@@ -177,7 +175,7 @@ const ImgButton = styled.button`
       height: 50px;
     }
   }
-`;
+`
 
 const Switcher = styled.a`
   padding: 8px 16px;
@@ -196,7 +194,7 @@ const Switcher = styled.a`
   i {
     padding-right: 10px;
   }
-`;
+`
 
 const Navbar = styled.ul`
   background: ${mediumColor};
@@ -206,7 +204,7 @@ const Navbar = styled.ul`
   @media only screen and (max-width: 768px) {
     padding: 0;
   }
-`;
+`
 
 const NavLink = styled.li`
   height: 56px;
@@ -238,22 +236,22 @@ const NavLink = styled.li`
       display: none;
     }
   }
-`;
+`
 
 const Hr = styled.hr`
   border: 0.3px solid ${mediumColor};
-`;
+`
 
 const Strong = styled.strong`
   color: ${darkColor};
-`;
+`
 
 const inputStyle = {
-  color: `black`,
+  color: 'black',
   border: 'none',
   width: '100%',
   background: 'inherit'
-};
+}
 
 const inputReadStyle = {
   cursor: 'text',
@@ -261,6 +259,6 @@ const inputReadStyle = {
   border: 'none',
   width: '100%',
   background: 'inherit'
-};
+}
 
-export {AddButton, ImgButton, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead};
+export {AddButton, ImgButton, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead}

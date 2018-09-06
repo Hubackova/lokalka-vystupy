@@ -1,22 +1,14 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {observer, Provider} from 'mobx-react'
-import {observable, toJS} from 'mobx'
-import DevTools from 'mobx-react-devtools'
-
-// import 'bootstrap/dist/css/bootstrap.css';
+import {observable} from 'mobx'
 
 import {logout} from '../functions/auth'
-import {Fb} from '../firebase/firebase-store'
-
 import {Navbar, NavLink} from './style.js'
-
 import Routes from './Routes/Routes'
 import RouteForm from './Routes/RouteForm'
-import Login from './Login'
-import Register from './Register'
 import LoginLayout from './LoginLayout'
-
+import {Fb} from '../firebase/firebase-store'
 import {Store} from '../firebase/Store'
 import {routesRef} from '../firebase/firebase-store'
 
@@ -54,7 +46,7 @@ const appState = {
   };
 
   render() {
-    const user = Fb.firebaseAuth().currentUser
+    // const user = Fb.firebaseAuth().currentUser
     const {authorized, email, uid} = appState
     const OwnStore = (uid !== 'Xs0w4MJr5xakWA4XBtAVAhawqzI3')
       ? new Store(routesRef.orderByChild('uid').equalTo(uid))
@@ -97,4 +89,8 @@ const User = ({email}) => {
       {cname}
     </span>
   )
+}
+
+User.propTypes = {
+  email: PropTypes.string
 }

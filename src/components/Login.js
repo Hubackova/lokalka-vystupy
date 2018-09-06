@@ -67,3 +67,8 @@ export default class Login extends Component {
     );
   }
 }
+
+
+Login.propTypes = {
+  switchPageToRegistration: PropTypes.function
+}

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {observer} from 'mobx-react'
 import styled from 'styled-components'
-import {AddButton, colors, Form} from '../style.js'
+import {AddButton, colors} from '../style.js'
 
 @observer class FormRows extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ import {AddButton, colors, Form} from '../style.js'
   }
 
   render() {
-    const {addNew, formValues, handleChange, state, toggleCheckbox} = this.props
+    const {formValues, handleChange, state, toggleCheckbox} = this.props
     const formRows = formValues.map(i => (
       <Formgroup key={i.name}>
         <Label for={i.name}>{i.label}</Label>
@@ -124,4 +124,11 @@ const ThisForm = styled.form`
 
 export default FormRows
 
+FormRows.propTypes = {
+  state: PropTypes.object,
+  addNew: PropTypes.function,
+  toggleCheckbox: PropTypes.function,
+  handleChange: PropTypes.function,
+  formValues: PropTypes.array
+}
 

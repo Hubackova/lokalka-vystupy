@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {Footer, Hr, Navbar, NavLink, Strong} from './style.js'
 import Login from './Login'
@@ -14,10 +13,7 @@ const Ul = styled.ul`
 `
 
 class LoginLayout extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {registration: false}
-  }
+  state = {registration: false}
 
   switchPageToRegistration = () => {
     this.setState({registration: true})
@@ -28,7 +24,6 @@ class LoginLayout extends Component {
   };
 
   render() {
-    const switcherText = this.state.registration === true ? 'Přihlášení' : 'Přepnout na vaše cesty'
     return (
       <div className="container-fluid">
         <Navbar>

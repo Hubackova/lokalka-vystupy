@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {observer, inject} from 'mobx-react'
-import {observable, toJS} from 'mobx'
+import {toJS} from 'mobx'
 
 import List from '../shared/List'
 import {Switcher} from '../style.js'
@@ -14,20 +14,20 @@ import {Switcher} from '../style.js'
   }
 
   switchRoutes = () => {
-    this.setState({pubicRoutes: !this.state.pubicRoutes})
+    this.setState((prevState) => {
+      return {pubicRoutes: !prevState.pubicRoutes}
+    });
   }
 
   render() {
-    const uid = this.props.uid
-    const ownstoreData = toJS(this.props.ownstore.data)
+    const {uid, ownstore, routestore} = this.props
+    const ownstoreData = toJS(ownstore.data)
     const hasownstoreData = ownstoreData.length !== 0
-
-    const data = toJS(this.props.routestore.data)
+    const data = toJS(routestore.data)
     const filteredData = data.filter(function (el) {
       return el.isPublic === true || el.uid === uid
     })
     const hasfilteredData = data.length !== 0
-
     const switcherText = (this.state.pubicRoutes === false) ? 'Všechny cesty' : 'Moje cesty'
     return (
       <div>
@@ -45,5 +45,9 @@ import {Switcher} from '../style.js'
 }
 export default Routes
 
-
+Routes.propTypes = {
+  uid: PropTypes.string,
+  ownstore: PropTypes.object,
+  routestore: PropTypes.object
+};
 
