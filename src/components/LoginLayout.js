@@ -38,7 +38,7 @@ class LoginLayout extends Component {
             : <Login switchPageToRegistration={this.switchPageToRegistration}/>}
         </div>
         <Footer footer mainColor>
-          <h1>Výstupy do Výročky 2018</h1>
+          <h1>Výstupy do Výročky 2019</h1>
           <Hr />
           <Ul>
             <Li>Opět sbíráme výstupy pomocí <Strong>formuláře</Strong></Li>

@@ -13,7 +13,6 @@ class Cell extends Component {
       const options = itemName === 'category'
         ? ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
         : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
-
       return (isEditable === false)
         ? <Td>{value}</Td>
         : this.state.editing

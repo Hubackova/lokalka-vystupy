@@ -5,7 +5,7 @@ import {observer} from 'mobx-react'
 
 import {Fb, routesRef} from '../../firebase/firebase-store'
 import {Td, Tr} from '../style.js'
-import {Cell} from './Cell'
+import Cell from './Cell'
 
 let updatedItem = observable({
   category: '',
@@ -38,7 +38,7 @@ let updatedItem = observable({
     const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]]
     // ES7 version: const itemId = Object.values(item)[10];
     const itemId = Object.keys(item).map(value => item[value])[10]
-    return sortedEntries.map(i => <Cell
+    const cells = sortedEntries.map(i => <Cell
       handleChange={this.handleChange}
       isEditable={isEditable}
       itemId={itemId}
@@ -46,6 +46,8 @@ let updatedItem = observable({
       key={Math.random()}
       value={i ? i[1] : ''}
     />)
+
+    return cells
   }
 
   handlePublicChange = e => {
