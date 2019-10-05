@@ -68,7 +68,8 @@ class FormRows extends Component {
       <ThisForm>
         <div style={{ marginBottom: "50px" }}>
           Vyhledávání cesty na Lezci (časem to bude třeba i designově hezčí...nebyl už čas 😅, a nebo se to nějak celkově přetvoří v promakanější formu 😎)
-          Vyhledávání začne po zadání alespoň 3 znaků)
+          Vyhledávání začne po zadání alespoň 3 znaků) <br />
+          <b>V případě písků to prosím přepište, ať je "podoblast" věž a "oblast" je podoblast</b>. To bude chtít ještě vyladit... Přepište i v případě jiných nesrovnalostí.
           <AutosuggestContainer style={{padding: "5px 10px", margin: "5px 0px" }} onSuggestionSelected={setDataFromLezec}/>
         </div>
         {formRows}
