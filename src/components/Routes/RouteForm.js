@@ -34,6 +34,14 @@ let state = observable({
     state.isPublic = true
   };
 
+  setDataFromLezec = e => {
+    state.name = e.target.getAttribute(["name"])
+    state.difficulty = e.target.getAttribute(["grade"])
+    state.subregion = e.target.getAttribute(["subregion"])
+    state.region = e.target.getAttribute(["region"])
+  };
+
+
   handleChange = e => {
     state[e.target.name] = e.target.value
   };
@@ -67,7 +75,7 @@ let state = observable({
 
     return (
       <div>
-        <FormRows addNew={this.addNew} formValues={formValues} handleChange={this.handleChange} state={state} toggleCheckbox={this.toggleCheckbox} />
+        <FormRows addNew={this.addNew} formValues={formValues} handleChange={this.handleChange} state={state} toggleCheckbox={this.toggleCheckbox} setDataFromLezec={this.setDataFromLezec}/>
         {/* <Statistics /> */}
       </div>
     )
