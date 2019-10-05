@@ -38,3 +38,8 @@ a {
 .react-autosuggest__suggestions-list >li {
  cursor: pointer;
 }
+
+.react-autosuggest__suggestions-list >li:hover {
+ color: #4DB6AC;
+ font-weight: bold;
+}
