@@ -66,11 +66,13 @@ class FormRows extends Component {
     });
     return (
       <ThisForm>
-        <div style={{ marginBottom: "50px" }}>
-          Vyhledávání cesty na Lezci (časem to bude třeba i designově hezčí...nebyl už čas 😅, a nebo se to nějak celkově přetvoří v promakanější formu 😎)
-          Vyhledávání začne po zadání alespoň 3 znaků) <br />
-          <b>V případě písků to prosím přepište, ať je "podoblast" věž a "oblast" je podoblast</b>. To bude chtít ještě vyladit... Přepište i v případě jiných nesrovnalostí.
-          <AutosuggestContainer style={{padding: "5px 10px", margin: "5px 0px" }} onSuggestionSelected={setDataFromLezec}/>
+        <div style={{ marginBottom: "50px", textAlign: "center" }}>
+          <AutosuggestContainer style={{minWidth: "40%", padding: "8px 16px", margin: "20px 0px", border: `1px solid ${colors.mediumColor}` }} onSuggestionSelected={setDataFromLezec}/>
+          "Vypůjčila jsem si" (čti ukradla) databázi cest na lezci, takže můžete použít vyhledávání - po výběru cesty se vyplní příslušný údaje <br />
+          <b>V případě písků to prosím přepište, ať je "podoblast" věž a "oblast" je podoblast</b>. To bude chtít ještě vyladit... (vlastně celej tenhle výplod mé rané tvorby by chtěl předělat, jak na to tak koukám...)) <br />
+          Vyhledávání začně po zadání minimálně tří písmen. <br />
+          Nezapomeňte doplnit jméno (až bude čas, zautomatizuju to...ale zatím bohužel 🥴), styl a kategorii! (případně nepovinně i měsíc)
+
         </div>
         {formRows}
         <div style={{ marginTop: "50px", textAlign: "right" }}>
@@ -88,6 +90,7 @@ class FormRows extends Component {
 
 const InputSpan = styled.span`
   display: table-cell;
+  width: 100%;
   & i {
     display: none;
   }
@@ -99,8 +102,6 @@ const InputSpan = styled.span`
 `;
 
 const Input = styled.input`
-  display: table-cell;
-  padding-bottom: 8px;
   border: none;
   width: 100%;
   &::placeholder {
@@ -110,14 +111,11 @@ const Input = styled.input`
 `;
 
 const Select = styled.select`
-  display: table-cell;
-  padding-bottom: 8px;
   border: none;
   width: 100%;
 `;
 
 const Label = styled.label`
-  display: table-cell;
   font-size: 0.9em;
   font-weight: normal;
   text-align: right;
@@ -132,9 +130,9 @@ const Label = styled.label`
 
 const Formgroup = styled.div`
   width: 100%;
-  display: table;
-  border-collapse: collapse;
-
+  display: flex;
+  align-items: center;
+  padding: 1px;
   border-bottom: 1px solid ${colors.lightGrey};
   &:hover label {
     font-weight: bold;
@@ -147,6 +145,7 @@ const ThisForm = styled.form`
   padding: 2em;
   width: 65%;
   min-width: 320px;
+  max-width: 800px;
   background: white;
   margin: 2em auto;
   @media only screen and (max-width: 768px) {
