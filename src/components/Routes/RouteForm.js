@@ -108,7 +108,7 @@ class RouteForm extends Component {
           toggleCheckbox={this.toggleCheckbox}
           setDataFromLezec={this.setDataFromLezec}
         />
-        <Statistics />
+        {/* <Statistics /> */}
       </FormWrapper>
     );
   }
