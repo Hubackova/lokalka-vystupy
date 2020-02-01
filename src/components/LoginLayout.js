@@ -27,10 +27,10 @@ class LoginLayout extends Component {
     return (
       <div className="container-fluid">
         <Navbar>
-          <NavLink>
-            <a onClick={this.switchPageToRegistration}>Registrace</a>
+          <NavLink onClick={this.switchPageToRegistration}>
+            <a >Registrace</a>
           </NavLink>
-          <NavLink> <a onClick={this.switchPageToLogin}>Přihlášení</a></NavLink>
+          <NavLink onClick={this.switchPageToLogin}> <a >Přihlášení</a></NavLink>
         </Navbar>
         <div>
           {this.state.registration

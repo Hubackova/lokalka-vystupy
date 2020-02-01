@@ -67,12 +67,14 @@ class FormRows extends Component {
     return (
       <ThisForm>
         <div style={{ marginBottom: "50px", textAlign: "center" }}>
-          <AutosuggestContainer style={{minWidth: "40%", padding: "8px 16px", margin: "20px 0px", border: `1px solid ${colors.mediumColor}` }} onSuggestionSelected={setDataFromLezec}/>
-          "Vypůjčila jsem si" (čti ukradla) databázi cest na lezci, takže můžete použít vyhledávání - po výběru cesty se vyplní příslušný údaje <br />
-          <b>V případě písků to prosím přepište, ať je "podoblast" věž a "oblast" je podoblast</b>. To bude chtít ještě vyladit... (vlastně celej tenhle výplod mé rané tvorby by chtěl předělat, jak na to tak koukám...)) <br />
-          Vyhledávání začně po zadání minimálně tří písmen. <br />
-          Nezapomeňte doplnit jméno (až bude čas, zautomatizuju to...ale zatím bohužel 🥴), styl a kategorii! (případně nepovinně i měsíc)
 
+          "Vypůjčila jsem si" (čti ukradla) databázi cest na lezci, takže můžete použít vyhledávání - po výběru cesty se vyplní příslušný údaje <br />
+          Vyhledávání začně po zadání minimálně tří písmen. <br />
+          <span style={{color: "red"}}>Nově přibyl i <b>sektor</b> (bere se taky z lezce) - Inža pak při úpravě do výročky vybere dvě nejadekvátnější pole z oblast / podoblast / sektor (abysme měli u písků věže apod.)</span><br />
+          Snad bude vše fungovat jak má, kdyby něco, dejte vědět<br />
+          Nezapomeňte doplnit jméno (až bude čas, zautomatizuju to...ale zatím bohužel 🥴), styl a kategorii! (případně nepovinně i měsíc)
+          <hr />
+          <AutosuggestContainer style={{minWidth: "40%", padding: "8px 16px", margin: "20px 0px", border: `1px solid ${colors.mediumColor}` }} onSuggestionSelected={setDataFromLezec}/>
         </div>
         {formRows}
         <div style={{ marginTop: "50px", textAlign: "right" }}>

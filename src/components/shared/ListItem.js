@@ -12,6 +12,7 @@ let updatedItem = observable({
   name: '',
   region: '',
   subregion: '',
+  subregion: '',
   difficulty: '',
   style: '',
   climbers: '',
@@ -35,9 +36,9 @@ let updatedItem = observable({
     Object.keys(item).forEach((keyName, keyIndex) => {
       entries.push([keyName, item[keyName]])
     })
-    const sortedEntries = [entries[0], entries[5], entries[6], entries[8], entries[3], entries[7], entries[1], entries[2]]
+    const sortedEntries = [entries[0], entries[5], entries[6], entries[9], entries[7], entries[3], entries[8], entries[1], entries[2]]
     // ES7 version: const itemId = Object.values(item)[10];
-    const itemId = Object.keys(item).map(value => item[value])[10]
+    const itemId = Object.keys(item).map(value => item[value])[11]
     const cells = sortedEntries.map(i => <Cell
       handleChange={this.handleChange}
       isEditable={isEditable}
@@ -53,7 +54,7 @@ let updatedItem = observable({
   handlePublicChange = e => {
     const {isEditable, item} = this.props
     if (!isEditable) return
-    const itemId = Object.keys(item).map(value => item[value])[10]
+    const itemId = Object.keys(item).map(value => item[value])[11]
     const itemName = 'isPublic'
     routesRef.child(itemId).update({[itemName]: !this.props.item.isPublic})
     this.setState({editing: false})

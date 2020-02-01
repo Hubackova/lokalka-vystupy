@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 function opacityChanger(opacity) {
-  return `rgba(204,230,229,${opacity})`
+  return `rgba(255, 233, 85,${opacity})`
 }
 
 const colors = {
-  lightColor: 'rgba(204,230,229,1)',
-  mediumColor: 'rgba(77,182,172,1)',
-  darkColor: 'rgba(0,134,125,1)',
+  lightColor: '#FFE955',
+  mediumColor: '#cfcfcf',
+  darkColor: '#222222',
 
   ultraLightGrey: '#efefef',
   lightGrey: '#bdbdbd',
@@ -15,9 +15,9 @@ const colors = {
   darkGrey: '#8d8d8d',
 }
 
-const lightColor = 'rgba(204,230,229,1)'
-const mediumColor = 'rgba(77,182,172,1)'
-const darkColor = 'rgba(0,134,125,1)'
+const lightColor = '#F3B804'
+const mediumColor = '#F6D42A'
+const darkColor = '#222222'
 
 const ultraLightGrey = '#efefef'
 const darkGrey = '#8d8d8d'
@@ -207,20 +207,23 @@ const Navbar = styled.ul`
 `
 
 const NavLink = styled.li`
-  height: 56px;
+  height: 64px;
   display: inline-block;
   float: ${props => props.primary ? 'left' : 'right'};
-  padding: 20px 12px;
+  padding: 20px 20px;
+  cursor: pointer;
   &:hover {
-    border-bottom: 2px solid ${lightColor};
+    border-bottom: 4px solid ${lightColor};
+    font-weight: 700;
   }
   a {
-    color: white !important;
+    color: ${darkColor} !important;
   }
   a:hover, a:active, a:focus {
     text-decoration: none !important;
-    cursor: pointer;
+
   }
+  
   @media only screen and (max-width: 768px) {
     display: block;
     height: 36px;
@@ -232,6 +235,22 @@ const NavLink = styled.li`
     a {
       color: black !important;
     }
+    &#user {
+      display: none;
+    }
+  }
+`
+const PseudoLink = styled.li`
+  height: 64px;
+  display: inline-block;
+  float: ${props => props.primary ? 'left' : 'right'};
+  padding: 20px 20px;
+  
+  @media only screen and (max-width: 768px) {
+    display: block;
+    height: 36px;
+    padding: 6px;
+    width: 100%;
     &#user {
       display: none;
     }
@@ -261,4 +280,4 @@ const inputReadStyle = {
   background: 'inherit'
 }
 
-export {AddButton, ImgButton, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead}
+export {AddButton, PseudoLink, ImgButton, colors, Footer, Form, ColoredWrapper, Hr, inputStyle, inputReadStyle, Navbar, NavLink, Switcher, Strong, Table, Td, Th, Tr, Thead}

@@ -4,7 +4,7 @@ import {observer, Provider} from 'mobx-react'
 import {observable} from 'mobx'
 
 import {logout} from '../functions/auth'
-import {Navbar, NavLink} from './style.js'
+import {Navbar, NavLink, PseudoLink} from './style.js'
 import Routes from './Routes/Routes'
 import RouteForm from './Routes/RouteForm'
 import LoginLayout from './LoginLayout'
@@ -61,17 +61,15 @@ const appState = {
           : <div className="container-fluid">
             {/*menu*/}
             <Navbar>
-              <NavLink>
-                <a href='/'
-                  onClick={() => {
+              <NavLink onClick={() => {
                     logout()
                     appState.authorized = false
-                  }}
-                >Odhlásit</a>
+                  }}>
+                <a href='/'>Odhlásit</a>
               </NavLink>
-              <NavLink id='user'><User email={email}/></NavLink>
-              <NavLink primary><a onClick={this.switchPageToNew}>Nová cesta</a></NavLink>
-              <NavLink primary><a onClick={this.switchPageToList}>Přehled cest</a></NavLink>
+              <PseudoLink id='user'><User email={email}/></PseudoLink>
+              <NavLink  onClick={this.switchPageToNew} primary><a>Nová cesta</a></NavLink>
+              <NavLink  onClick={this.switchPageToList} primary><a >Přehled cest</a></NavLink>
             </Navbar>
             {/*obsah*/}
             {!appState.list ? <RouteForm /> : <Routes />}

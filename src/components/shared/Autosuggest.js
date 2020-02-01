@@ -52,10 +52,11 @@ const AutosuggestContainer = ({ ...props }) => {
     <div
       name={suggestion.title}
       grade={suggestion.grade}
+      sector={suggestion.sector}
       subregion={suggestion.subRegion}
       region={suggestion.region}
     >
-      {suggestion.title} / {suggestion.grade} / {suggestion.subRegion} / {suggestion.region}
+      {suggestion.title} / {suggestion.grade} / {suggestion.sector} /  {suggestion.subRegion} / {suggestion.region}
     </div>
   );
   const onChange = (event, { newValue }) => setValue(newValue);

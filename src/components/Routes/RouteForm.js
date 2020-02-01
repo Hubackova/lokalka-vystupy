@@ -14,6 +14,7 @@ let state = observable({
   name: "",
   region: "",
   subregion: "",
+  sector: "",
   difficulty: "",
   style: "",
   climbers: "",
@@ -42,6 +43,7 @@ class RouteForm extends Component {
   setDataFromLezec = e => {
     state.name = e.target.getAttribute(["name"]);
     state.difficulty = e.target.getAttribute(["grade"]);
+    state.sector = e.target.getAttribute(["sector"]);
     state.subregion = e.target.getAttribute(["subregion"]);
     state.region = e.target.getAttribute(["region"]);
   };
@@ -74,6 +76,7 @@ class RouteForm extends Component {
       { name: "name", label: "Jméno cesty", placeholder: "zadejte jméno cesty" },
       { name: "region", label: "Oblast", placeholder: "zadejte podoblast, např. Moravský Kras" },
       { name: "subregion", label: "Podoblast", placeholder: "zadejte podoblast, např. Sloup" },
+      { name: "sector", label: "Sektor", placeholder: "zadejte sektor" },
       { name: "difficulty", label: "Obtížnost", placeholder: "zadejte obtížnost cesty" },
       { name: "style", label: "Styl", placeholder: "zadejte styl přelezu, např. OS" },
       { name: "climbers", label: "Lezci", placeholder: "zadejte lezce" },
