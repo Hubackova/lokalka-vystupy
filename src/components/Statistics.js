@@ -38,7 +38,7 @@ class Statistics extends Component {
         <PieChart data={ownstoreData} hasLegend />
         <div style={{ textAlign: "center", paddingTop: 20 }}>
           <span style={{ fontWeight: "bold" }}>Deadline: </span>
-          <span style={{ color: "red", fontWeight: "bold" }}>31.12.2017</span>
+          <span style={{ color: "red", fontWeight: "bold" }}>31.12.2020</span>
           <Countdown date={moment().endOf("year")} renderer={renderer} />
         </div>
       </ChartWrapper>
@@ -51,6 +51,9 @@ const ChartWrapper = styled.div`
   text-align: center;
   @media only screen and (max-width: 1023px) {
     width: 100%;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 5px;
   }
 `;
 

@@ -65,18 +65,41 @@ const Th = styled.th`
   padding: 1em;
   text-align: left;
   &:nth-child(1) {
-    width: 3%;
+    width: 20px;
+    max-width: 20px;
   }
-  &:nth-child(6), &:nth-child(7) {
-    width: 8%;
+  &:nth-child(3) {
+    width: 200px;
+    min-width: 200px;
+  }
+  &:nth-child(7) {
+    width: 70px;
+    max-width: 70px;
+  }
+   &:nth-child(8) {
+    width: 50px;
+    max-width: 80px;
+  }
+  &:nth-child(9) {
+    min-width: 200px;
+  }
+  &:nth-child(10) {
+    min-width: 110px;
+    width: 110px;
+    max-width: 110px;
+  }
+  &:nth-child(11) {
+    width: 20px;
+    max-width: 20px;
   }
   @media only screen and (max-width: 414px) {
     padding: 2px;
-    &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
+    &:nth-child(1),&:nth-child(2),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(10) {
       display:none;
     }
-    &:nth-child(2), &:nth-child(3) {
-      width: 44%;
+    &:nth-child(2), &:nth-child(9) {
+      width: 45%;
+      min-width: 45%;
     }
   }
 `
@@ -101,17 +124,40 @@ const Td = styled.td`
    text-align: 'left';
   }
   &:nth-child(1) {
-    width: 3%;
+    width: 20px;
+    max-width: 20px;
   }
-  &:nth-child(6), &:nth-child(7) {
-    width: 5%;
+  &:nth-child(3) {
+    width: 200px;
+    min-width: 200px;
+  }
+  &:nth-child(7) {
+    width: 70px;
+    max-width: 70px;
+  }
+   &:nth-child(8) {
+    width: 50px;
+    max-width: 80px;
+  }
+  &:nth-child(9) {
+    min-width: 200px;
+  }
+  &:nth-child(10) {
+    min-width: 110px;
+    width: 110px;
+    max-width: 110px;
+  }
+  &:nth-child(11) {
+    width: 20px;
+    max-width: 20px;
   }
   @media only screen and (max-width: 414px) {
-    &:nth-child(1),&:nth-child(2), &:nth-child(5), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
+    &:nth-child(1),&:nth-child(2),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(10) {
       display:none;
     }
-    &:nth-child(2), &:nth-child(3) {
-      width: 40%;
+    &:nth-child(2), &:nth-child(9) {
+      width: 45%;
+      min-width: 45%;
     }
   }
 `
@@ -223,7 +269,7 @@ const NavLink = styled.li`
     text-decoration: none !important;
 
   }
-  
+
   @media only screen and (max-width: 768px) {
     display: block;
     height: 36px;
@@ -245,7 +291,7 @@ const PseudoLink = styled.li`
   display: inline-block;
   float: ${props => props.primary ? 'left' : 'right'};
   padding: 20px 20px;
-  
+
   @media only screen and (max-width: 768px) {
     display: block;
     height: 36px;
