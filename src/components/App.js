@@ -52,7 +52,7 @@ const appState = {
       ? new Store(routesRef.orderByChild('uid').equalTo(uid))
       : new Store(routesRef)
     const RoutesStore = new Store(routesRef)
-    return <div style={{height: 500, display: "flex", justifyContent: "center", alignItems: "center"}}><h2>Zápis výstupů byl pro rok  <b style={{color: "green"}}>2020</b> uzavřen. Zápis pro rok <b style={{color: "red"}}>2021</b> začne brzo.</h2></div>
+    // return <div style={{height: 500, display: "flex", justifyContent: "center", alignItems: "center"}}><h2>Zápis výstupů byl pro rok  <b style={{color: "green"}}>2021</b> uzavřen. Zápis pro rok <b style={{color: "red"}}>2022</b> začne brzo.</h2></div>
     return appState.loading === true
       ? <h1>Loading</h1>
       : <Provider ownstore={OwnStore} routestore={RoutesStore} uid={uid}>

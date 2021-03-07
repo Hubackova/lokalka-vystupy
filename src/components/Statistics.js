@@ -38,7 +38,7 @@ class Statistics extends Component {
         <PieChart data={ownstoreData} hasLegend />
         <div style={{ textAlign: "center", paddingTop: 20 }}>
           <span style={{ fontWeight: "bold" }}>Deadline: </span>
-          <span style={{ color: "red", fontWeight: "bold" }}>31.12.2020</span>
+          <span style={{ color: "red", fontWeight: "bold" }}>31.12.2021</span>
           <Countdown date={moment().endOf("year")} renderer={renderer} />
         </div>
       </ChartWrapper>
