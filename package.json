@@ -20,7 +20,7 @@
     "mobx": "^3.1.0",
     "mobx-react": "^4.1.0",
     "mobx-react-devtools": "^4.2.11",
-    "moment": "^2.19.2",
+    "moment": "^2.29.2",
     "prop-types": "^15.5.10",
     "react": "^16.10.2",
     "react-autosuggest": "^9.4.3",
