@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "custom-react-scripts": "0.0.23",
+    "custom-react-scripts": "0.2.2",
     "eslint": "^5.5.0",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.26.0",
