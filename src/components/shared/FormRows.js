@@ -6,7 +6,6 @@ import { AddButton, colors } from "../style.js";
 import AutosuggestContainer from "./Autosuggest.js";
 
 const FormRows = observer(({ addNew, ...props }) => {
-  console.log(props);
   const [add, setAdd] = useState(true);
   const clickAdd = (e) => {
     addNew(e);

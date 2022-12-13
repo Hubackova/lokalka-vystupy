@@ -14,16 +14,8 @@ import { Fb } from "../firebase/firebase-store";
 import { routesRef } from "../firebase/firebase-store";
 import { unstable_batchedUpdates } from "react-dom";
 
-const appState = observable({
-  authorized: false,
-  list: false,
-  uid: false,
-  email: false,
-});
-
-const App = observer(() => {
-  const db = getDatabase();
-  const [data, setData] = useState([]);
+const App = () => {
+  const [list, setList] = useState(false);
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
@@ -38,59 +30,18 @@ const App = observer(() => {
     return unsub;
   }, []);
 
-  useEffect(() => {
-    onValue(ref(db, "routes/"), (snapshot) => {
-      const items = [];
-      snapshot.forEach((child) => {
-        let childItem = child.val();
-        childItem.key = child.key;
-        items.push(childItem);
-      });
-      setData(items);
-    });
-  }, [db]);
-
-  /*   useEffect(() => {
-    if (currentUser) {
-      appState.authorized = true;
-      appState.uid = currentUser.uid;
-      appState.email = currentUser.email;
-    } else {
-      appState.authorized = false;
-      appState.userid = false;
-      appState.email = false;
-    }
-  }, [currentUser]);
- */
-  /*   useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        appState.authorized = true;
-        appState.loading = false;
-        appState.uid = user.uid;
-        appState.email = user.email;
-      } else {
-        appState.authorized = false;
-        appState.loading = false;
-        appState.userid = false;
-        appState.email = false;
-      }
-    });
-  }); */
-
   const switchPageToList = () => {
-    appState.list = true;
+    setList(true);
   };
 
   const switchPageToNew = () => {
-    appState.list = false;
+    setList(false);
   };
   // const user = Fb.firebaseAuth().currentUser
-  const { authorized, email, uid } = appState;
+
   console.log(currentUser && currentUser.uid);
 
-  const OwnStore = uid && uid !== "Xs0w4MJr5xakWA4XBtAVAhawqzI3" ? data : data;
+  /*   const OwnStore = uid && uid !== "Xs0w4MJr5xakWA4XBtAVAhawqzI3" ? data : data; */
 
   // return <div style={{height: 500, display: "flex", justifyContent: "center", alignItems: "center"}}><h2>Zápis výstupů byl pro rok  <b style={{color: "green"}}>2021</b> uzavřen. Zápis pro rok <b style={{color: "red"}}>2022</b> začne brzo.</h2></div>
 
@@ -105,13 +56,12 @@ const App = observer(() => {
         <NavLink
           onClick={() => {
             logout();
-            appState.authorized = false;
           }}
         >
           <a href="/">Odhlásit</a>
         </NavLink>
         <PseudoLink id="user">
-          <User email={email} />
+          <User email={currentUser.email} />
         </PseudoLink>
         <NavLink onClick={switchPageToNew} primary>
           <a>Nová cesta</a>
@@ -121,10 +71,10 @@ const App = observer(() => {
         </NavLink>
       </Navbar>
       {/*obsah*/}
-      {!appState.list ? <RouteForm /> : <Routes />}
+      {list ? <Routes /> : <RouteForm />}
     </div>
   );
-});
+};
 
 export default App;
 

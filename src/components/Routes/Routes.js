@@ -1,24 +1,43 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getDatabase, onValue, ref } from "firebase/database";
+import { getAuth } from "firebase/auth";
 import PropTypes from "prop-types";
-import { observer, inject } from "mobx-react";
-import { toJS } from "mobx";
-
 import List from "../shared/List";
 import { Switcher } from "../style.js";
 
-const Routes = observer((...props) => {
+const Routes = () => {
+  const db = getDatabase();
+  const auth = getAuth();
   const [pubicRoutes, setPubicRoutes] = useState(false);
+  const [routes, setRoutes] = useState(false);
   const switchRoutes = () => {
     setPubicRoutes(!pubicRoutes);
   };
-  const { uid, ownstore, routestore } = props;
-  const ownstoreData = toJS(ownstore.data);
-  const hasownstoreData = ownstoreData.length !== 0;
-  const data = toJS(routestore.data);
-  const filteredData = data.filter(function(el) {
-    return el.isPublic === true || el.uid === uid;
-  });
-  const hasfilteredData = data.length !== 0;
+
+  useEffect(() => {
+    onValue(ref(db, "routes/"), (snapshot) => {
+      const items = [];
+      snapshot.forEach((child) => {
+        let childItem = child.val();
+        childItem.key = child.key;
+        items.push(childItem);
+      });
+      setRoutes(items);
+    });
+  }, [db]);
+
+  const ownData =
+    routes.length > 0
+      ? routes.filter((el) => el.uid === auth.currentUser.uid)
+      : [];
+
+  const filteredData =
+    routes.length > 0
+      ? routes.filter(
+          (el) => el.isPublic === true || el.uid === auth.currentUser.uid
+        )
+      : [];
+
   const switcherText = pubicRoutes === false ? "Všechny cesty" : "Moje cesty";
   return (
     <div>
@@ -29,15 +48,13 @@ const Routes = observer((...props) => {
         </Switcher>
       </div>
       {pubicRoutes === false ? (
-        <div>{hasownstoreData && <List data={ownstoreData} isEditable />}</div>
+        <div>{routes && <List data={ownData} isEditable />}</div>
       ) : (
-        <div>
-          {hasfilteredData && <List data={filteredData} isEditable={false} />}
-        </div>
+        <div>{routes && <List data={filteredData} isEditable={false} />}</div>
       )}
     </div>
   );
-});
+};
 
 /* @inject('ownstore', 'routestore', 'uid') */
 

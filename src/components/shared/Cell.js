@@ -1,67 +1,109 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import {routesRef} from '../../firebase/firebase-store'
-import {inputStyle, inputReadStyle, Td} from '../style.js'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { inputStyle, inputReadStyle, Td } from "../style.js";
+import { getDatabase, ref, set } from "firebase/database";
 
-class Cell extends Component {
-    state = {
-        editing: false
-      }
+const Cell = ({ item, itemName, isEditable, handleChange }) => {
+  const [editing, setEditing] = useState(false);
 
-    render() {
-      const {itemName, isEditable, value, handleChange} = this.props
-      const options = itemName === 'category'
-        ? ['Bouldery', 'Skalní jednodélky', 'Skalní vícedélky', 'Písky', 'Skalní horské výstupy', 'Mixové výstupy v horách', 'Ledy']
-        : ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
-      return (isEditable === false)
-        ? <Td>{value}</Td>
-        : this.state.editing
-          ? (itemName === 'category' || itemName === 'date'
-            ? <Td><select name={itemName} onBlur={this.onBlur} onChange={handleChange} onKeyDown={this.keyDown} ref="selectedInput" style={inputStyle}>
-              <option disabled value=''>-- vyberte --</option>
-              {options.map(option => (<option key={option}>{option}</option>))};
-            </select></Td>
-            : <Td><input name={itemName} onBlur={this.onBlur} onChange={handleChange} onKeyDown={this.keyDown} ref="selectedInput" style={inputStyle}/></Td>)
-          : (itemName === 'category' || itemName === 'date')
-          //not editing
-            ? <Td><select name={itemName} onClick={this.onFocus} style={inputReadStyle} value={value}>
-              <option disabled value=''>-- vyberte --</option>
-              {options.map(option => (<option key={option}>{option}</option>))};
-            </select></Td>
-            : <Td><input name={itemName} onClick={this.onFocus} style={inputReadStyle} value={value}/></Td>
+  const db = getDatabase();
+  const options =
+    itemName === "category"
+      ? [
+          "Bouldery",
+          "Skalní jednodélky",
+          "Skalní vícedélky",
+          "Písky",
+          "Skalní horské výstupy",
+          "Mixové výstupy v horách",
+          "Ledy",
+        ]
+      : [
+          "leden",
+          "únor",
+          "březen",
+          "duben",
+          "květen",
+          "červen",
+          "červenec",
+          "srpen",
+          "září",
+          "říjen",
+          "listopad",
+          "prosinec",
+        ];
+
+  const onFocus = (e) => {
+    setEditing(true);
+  };
+
+  const update = (e) => {
+    const { key, ...rest } = item;
+    set(ref(db, "routes/" + item.key), {
+      ...rest,
+      [itemName]: e.target.value,
+    });
+    setEditing(false);
+  };
+
+  const onBlur = (e) => {
+    update(e);
+  };
+
+  const keyDown = (e) => {
+    if (e.keyCode === "13" && editing) {
+      update(e);
     }
+  };
 
-    onFocus = e => {
-      this.setState({editing: true}, () => {
-        this.refs.selectedInput.focus()
-      })
-    }
+  return isEditable === false ? (
+    <Td>{item[itemName]}</Td>
+  ) : itemName === "category" || itemName === "date" ? (
+    <Td>
+      <select
+        name={itemName}
+        defaultValue={item[itemName]}
+        onChange={(e) => {
+          update(e);
+        }}
+        style={editing ? inputStyle : inputReadStyle}
+      >
+        <option disabled value="">
+          vyberte
+        </option>
+        {options.map((option) => (
+          <option key={option}>{option}</option>
+        ))}
+        ;
+      </select>
+    </Td>
+  ) : editing ? (
+    <Td>
+      <input
+        name={itemName}
+        onBlur={onBlur}
+        onChange={handleChange}
+        onKeyDown={keyDown}
+        style={inputStyle}
+      />
+    </Td>
+  ) : (
+    <Td>
+      <input
+        name={item.name}
+        onClick={onFocus}
+        style={inputReadStyle}
+        defaultValue={item[itemName]}
+      />
+    </Td>
+  );
+};
+export default Cell;
 
-    update = e => {
-      const {itemId, itemName} = this.props
-      routesRef.child(itemId).update({[itemName]: e.target.value})
-      this.setState({editing: false})
-    }
-
-    onBlur = e => {
-      this.update(e)
-    }
-
-    keyDown = e => {
-      const isEditing = this.state.editing
-      if (e.keyCode === '13' && isEditing) {
-        this.update(e)
-      }
-    }
-
-  }
-
-  export default Cell
-
-  Cell.propTypes = {
-    itemName: PropTypes.string,
-    itemId: PropTypes.string,
-    isEditable: PropTypes.bool,
-    value: PropTypes.string,
-    handleChange: PropTypes.func
-  }
+Cell.propTypes = {
+  itemName: PropTypes.string,
+  itemId: PropTypes.string,
+  isEditable: PropTypes.bool,
+  value: PropTypes.string,
+  handleChange: PropTypes.func,
+};
