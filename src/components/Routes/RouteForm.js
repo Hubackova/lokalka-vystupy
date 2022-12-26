@@ -78,12 +78,12 @@ const RouteForm = () => {
     { name: "name", label: "Jméno cesty", placeholder: "zadejte jméno cesty" },
     {
       name: "region",
-      label: "Oblast",
+      label: "Poloha",
       placeholder: "zadejte podoblast, např. Moravský Kras",
     },
     {
       name: "subregion",
-      label: "Podoblast",
+      label: "Oblast",
       placeholder: "zadejte podoblast, např. Sloup",
     },
     { name: "sector", label: "Sektor", placeholder: "zadejte sektor" },

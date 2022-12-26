@@ -1,10 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { observer } from "mobx-react";
 import { toJS } from "mobx";
 
 import { ImgButton, Table, Thead, Th, Tr } from "../style.js";
 import ListItem from "./ListItem.js";
+import { getAuth } from "firebase/auth";
 
 const imgBoulder = require("../../images/boulder.gif");
 const imgRocksShort = require("../../images/rocks.gif");
@@ -18,7 +18,7 @@ const imgAll = require("../../images/all.png");
 const List = ({ data, isEditable }) => {
   const [filtered, setfiltered] = useState("data");
   const [sortType, setsortType] = useState(false);
-
+  const auth = getAuth();
   const bouldersF = (item) => item.category === "Bouldery";
   const rocksShortF = (item) => item.category === "Skalní jednodélky";
   const rocksLongF = (item) => item.category === "Skalní vícedélky";
@@ -68,8 +68,8 @@ const List = ({ data, isEditable }) => {
   const headData = [
     { name: "category", msg: "Kategorie" },
     { name: "name", msg: "Název cesty" },
-    { name: "region", msg: "Oblast" },
-    { name: "subregion", msg: "Podoblast" },
+    { name: "region", msg: "Poloha" },
+    { name: "subregion", msg: "Oblast" },
     { name: "sector", msg: "Sektor" },
     { name: "difficulty", msg: "Obtížnost" },
     { name: "style", msg: "Styl" },
@@ -116,9 +116,16 @@ const List = ({ data, isEditable }) => {
   );
   const listHead = [publicColumn, ...listHeadData, <Th key="remove" />];
   const bodyData = filtered === "data" ? data : filteredData[filtered];
-  console.log(bodyData, "aa");
   const listBody = sortBy(bodyData).map((item) => (
-    <ListItem isEditable={isEditable} item={item} key={item.key} />
+    <ListItem
+      isEditable={
+        isEditable ||
+        item.uid === auth.currentUser.uid ||
+        auth.currentUser.uid === "Xs0w4MJr5xakWA4XBtAVAhawqzI3"
+      }
+      item={item}
+      key={item.key}
+    />
   ));
 
   return (

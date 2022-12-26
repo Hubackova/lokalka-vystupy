@@ -32,20 +32,20 @@ const Routes = () => {
       : [];
 
   const filteredData =
-    routes.length > 0
+    auth.currentUser.uid === "Xs0w4MJr5xakWA4XBtAVAhawqzI3"
+      ? routes
+      : routes.length > 0
       ? routes.filter(
           (el) => el.isPublic === true || el.uid === auth.currentUser.uid
         )
       : [];
 
   const switcherText = pubicRoutes === false ? "Všechny cesty" : "Moje cesty";
+  if (!auth.currentUser.uid) return;
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <Switcher onClick={switchRoutes}>
-          <i className="fa fa-refresh" />
-          {switcherText}
-        </Switcher>
+        <Switcher onClick={switchRoutes}>zobrazit {switcherText}</Switcher>
       </div>
       {pubicRoutes === false ? (
         <div>{routes && <List data={ownData} isEditable />}</div>

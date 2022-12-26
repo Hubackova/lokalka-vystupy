@@ -37,11 +37,6 @@ const App = () => {
   const switchPageToNew = () => {
     setList(false);
   };
-  // const user = Fb.firebaseAuth().currentUser
-
-  console.log(currentUser && currentUser.uid);
-
-  /*   const OwnStore = uid && uid !== "Xs0w4MJr5xakWA4XBtAVAhawqzI3" ? data : data; */
 
   // return <div style={{height: 500, display: "flex", justifyContent: "center", alignItems: "center"}}><h2>Zápis výstupů byl pro rok  <b style={{color: "green"}}>2021</b> uzavřen. Zápis pro rok <b style={{color: "red"}}>2022</b> začne brzo.</h2></div>
 

@@ -1,11 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { observer } from "mobx-react";
 import styled from "styled-components";
 import { AddButton, colors } from "../style.js";
 import AutosuggestContainer from "./Autosuggest.js";
 
-const FormRows = observer(({ addNew, ...props }) => {
+const FormRows = ({ addNew, ...props }) => {
   const [add, setAdd] = useState(true);
   const clickAdd = (e) => {
     addNew(e);
@@ -24,7 +23,7 @@ const FormRows = observer(({ addNew, ...props }) => {
   const formRows = formValues.map((i) => {
     return (
       <Formgroup key={i.name}>
-        <Label for={i.name}>{i.label}</Label>
+        <Label htmlFor={i.name}>{i.label}</Label>
         {i.type === "checkbox" ? (
           <InputSpan>
             <i className="fa fa-user" />{" "}
@@ -72,8 +71,8 @@ const FormRows = observer(({ addNew, ...props }) => {
         Vyhledávání začně po zadání minimálně tří písmen. <br />
         <span style={{ color: "red" }}>
           Nově přibyl i <b>sektor</b> (bere se taky z lezce) - Inža pak při
-          úpravě do výročky vybere dvě nejadekvátnější pole z oblast / podoblast
-          / sektor (abysme měli u písků věže apod.)
+          úpravě do výročky vybere dvě nejadekvátnější pole z poloha / oblast /
+          sektor (abysme měli u písků věže apod.)
         </span>
         <br />
         Snad bude vše fungovat jak má, kdyby něco, dejte vědět
@@ -102,7 +101,7 @@ const FormRows = observer(({ addNew, ...props }) => {
       </div>
     </ThisForm>
   );
-});
+};
 
 const InputSpan = styled.span`
   display: table-cell;

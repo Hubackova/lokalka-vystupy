@@ -5,21 +5,21 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { child, getDatabase, push, ref, set } from "firebase/database";
 
 export function saveUser(user) {
-  return Fb.ref
-    .child(`users/${user.uid}/info`)
-    .set({
-      email: user.email,
-      uid: user.uid,
-    })
-    .then(() => user);
+  console.log(user, "aaaaaaaaaaaaaaa", user.uid, user.email);
+  const db = getDatabase();
+  return set(ref(db, "users/" + user.uid + "/info"), {
+    email: user.email,
+    uid: user.uid,
+  });
 }
 
 export function signIn(email, pw) {
   const auth = getAuth();
   return createUserWithEmailAndPassword(auth, email, pw)
-    .then(saveUser)
+    .then((user) => saveUser(user.user))
     .catch((error) => alert(error, error));
 }
 

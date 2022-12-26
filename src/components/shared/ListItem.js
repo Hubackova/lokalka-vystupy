@@ -1,9 +1,7 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { observable } from "mobx";
-import { observer } from "mobx-react";
 import { getDatabase, set, ref, remove, update } from "firebase/database";
-import { Fb, routesRef } from "../../firebase/firebase-store";
 import { Td, Tr } from "../style.js";
 import Cell from "./Cell";
 
@@ -21,7 +19,6 @@ let updatedItem = observable({
 });
 
 const ListItem = ({ isEditable, item }) => {
-  const [editable, setEditable] = useState(isEditable);
   const db = getDatabase();
   const removeItem = () => {
     remove(ref(db, "routes/" + item.key));
@@ -69,7 +66,6 @@ const ListItem = ({ isEditable, item }) => {
       ...rest,
       isPublic: !item.isPublic,
     });
-    setEditable(false);
   };
 
   return (
@@ -77,13 +73,13 @@ const ListItem = ({ isEditable, item }) => {
       <Td>
         <input
           defaultChecked={item.isPublic}
-          disabled={!editable}
+          disabled={!isEditable}
           onClick={handlePublicChange}
           type="checkbox"
         />
       </Td>
       {renderCells()}
-      {editable && (
+      {isEditable && (
         <Td style={{ textAlign: "right" }}>
           <a onClick={removeItem}>🗑️</a>
         </Td>
