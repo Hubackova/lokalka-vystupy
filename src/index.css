@@ -1,13 +1,45 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  outline: none !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+h1, .form-button{
+	text-align: center;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* REACT AUTOSUGGEST */
+.react-autosuggest__suggestions-list {
+ list-style: none;
+ padding: 15px;
+ border: 1px solid darkGrey;
+}
+
+.react-autosuggest__suggestions-list >li {
+ cursor: pointer;
+}
+
+.react-autosuggest__suggestions-list >li:hover {
+ color: #4DB6AC;
+ font-weight: bold;
 }
