@@ -28,7 +28,7 @@ const RouteForm = () => {
     e.preventDefault();
     if (!form.category || !form.name || !form.climbers || !form.region) {
       return alert(
-        "vyplň prosím minimálně jméno cesty, kategorii, lezce a oblast"
+        "vyplň prosím minimálně jméno cesty, polohu, lezce a oblast"
       );
     }
     const db = getDatabase();
