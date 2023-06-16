@@ -57,7 +57,7 @@ const RouteForm = () => {
   };
 
   const toggleCheckbox = (e) => {
-    form[e.target.name] = !form.isPublic;
+    setForm({ ...form, [e.target.name]: !form.isPublic })
   };
   const formValues = [
     { type: "checkbox", name: "isPublic", label: "Zveřejnit" },
